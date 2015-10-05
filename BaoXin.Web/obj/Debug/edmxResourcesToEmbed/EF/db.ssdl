@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_baoxinModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="db_baoxinModelStoreContainer">
+    <EntitySet Name="ChatInfo" EntityType="db_baoxinModel.Store.ChatInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="City" EntityType="db_baoxinModel.Store.City" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="dtproperties" EntityType="db_baoxinModel.Store.dtproperties" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SendFile" EntityType="db_baoxinModel.Store.SendFile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Shop_Goods" EntityType="db_baoxinModel.Store.Shop_Goods" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Shop_Order" EntityType="db_baoxinModel.Store.Shop_Order" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Shop_People" EntityType="db_baoxinModel.Store.Shop_People" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Shop_Photo" EntityType="db_baoxinModel.Store.Shop_Photo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Shop_Store" EntityType="db_baoxinModel.Store.Shop_Store" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SpeechInfo" EntityType="db_baoxinModel.Store.SpeechInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="db_baoxinModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsersFriend" EntityType="db_baoxinModel.Store.UsersFriend" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="ChatInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="user_from" Type="varchar" MaxLength="50" />
+    <Property Name="user_to" Type="varchar" MaxLength="50" />
+    <Property Name="content" Type="varchar(max)" />
+    <Property Name="expression" Type="varchar" MaxLength="50" />
+    <Property Name="color" Type="varchar" MaxLength="50" />
+    <Property Name="ispublic" Type="bit" />
+    <Property Name="sendtime" Type="datetime" />
+    <Property Name="IsOpen" Type="bit" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+    <Property Name="orderid" Type="int" />
+  </EntityType>
+  <EntityType Name="dtproperties">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="property" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="objectid" Type="int" />
+    <Property Name="property" Type="varchar" Nullable="false" MaxLength="64" />
+    <Property Name="value" Type="varchar" MaxLength="255" />
+    <Property Name="uvalue" Type="nvarchar" MaxLength="255" />
+    <Property Name="lvalue" Type="image" />
+    <Property Name="version" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SendFile">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Accept_UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Send_UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Send_File" Type="varchar" MaxLength="100" />
+    <Property Name="Send_Time" Type="smalldatetime" />
+    <Property Name="Send_FileName" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Shop_Goods">
+    <Key>
+      <PropertyRef Name="GoodsId" />
+    </Key>
+    <Property Name="GoodsId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="GoodsSnum" Type="nchar" MaxLength="20" />
+    <Property Name="GoodsName" Type="nchar" MaxLength="50" />
+    <Property Name="GoodsPrice" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Goodsnumber" Type="smallint" />
+    <Property Name="StoreId" Type="int" />
+    <Property Name="PhotoId" Type="int" />
+    <Property Name="AddTime" Type="datetime" />
+    <Property Name="BoolYX" Type="bit" />
+  </EntityType>
+  <EntityType Name="Shop_Order">
+    <Key>
+      <PropertyRef Name="ShopOrderID" />
+    </Key>
+    <Property Name="ShopOrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StoreId" Type="int" />
+    <Property Name="PeopleId_buy" Type="int" />
+    <Property Name="GoodsId" Type="int" />
+    <Property Name="buyNum" Type="int" />
+    <Property Name="butTime" Type="datetime" />
+    <Property Name="BoolYX" Type="bit" />
+    <Property Name="BoolSeng" Type="bit" />
+  </EntityType>
+  <EntityType Name="Shop_People">
+    <Key>
+      <PropertyRef Name="PeopleId" />
+    </Key>
+    <Property Name="PeopleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PeopleNum" Type="varchar" MaxLength="50" />
+    <Property Name="PeopleName" Type="varchar" MaxLength="50" />
+    <Property Name="PeopleAdd" Type="varchar" MaxLength="50" />
+    <Property Name="PeopleEmail" Type="varchar" MaxLength="50" />
+    <Property Name="PeoplePhone" Type="varchar" MaxLength="50" />
+    <Property Name="PeoplePay" Type="varchar" MaxLength="50" />
+    <Property Name="Note" Type="varchar" MaxLength="50" />
+    <Property Name="BoolLX" Type="bit" />
+  </EntityType>
+  <EntityType Name="Shop_Photo">
+    <Key>
+      <PropertyRef Name="PhotoId" />
+    </Key>
+    <Property Name="PhotoId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PhontName" Type="nchar" MaxLength="100" />
+    <Property Name="PhotoURL" Type="nchar" MaxLength="100" />
+    <Property Name="Note" Type="nchar" MaxLength="10" />
+    <Property Name="BoolYX" Type="bit" />
+  </EntityType>
+  <EntityType Name="Shop_Store">
+    <Key>
+      <PropertyRef Name="StoreId" />
+    </Key>
+    <Property Name="StoreId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StoreNum" Type="nchar" MaxLength="50" />
+    <Property Name="StoreName" Type="nchar" MaxLength="50" />
+    <Property Name="PhotoId" Type="int" />
+    <Property Name="LicenseNumber" Type="nchar" MaxLength="50" />
+    <Property Name="Agreement" Type="nchar" MaxLength="200" />
+    <Property Name="BoolYX" Type="bit" />
+    <Property Name="StoreUser" Type="nchar" MaxLength="50" />
+    <Property Name="PeopleId" Type="int" />
+    <Property Name="BoolPass" Type="bit" />
+    <Property Name="AddTime" Type="datetime" />
+    <Property Name="PassTime" Type="datetime" />
+    <Property Name="StoreOrde" Type="int" />
+  </EntityType>
+  <EntityType Name="SpeechInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FromUser" Type="uniqueidentifier" />
+    <Property Name="SpeachContent" Type="nvarchar(max)" />
+    <Property Name="SpeechImage" Type="nvarchar(max)" />
+    <Property Name="IsVip" Type="tinyint" />
+    <Property Name="State" Type="tinyint" />
+    <Property Name="SumbitTime" Type="datetime" />
+    <Property Name="DelUserId" Type="nvarchar" MaxLength="50" />
+    <Property Name="DelTime" Type="datetime" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="cityname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sourcecity" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="NickName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Contactqq" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contactaddr" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="avatar" Type="nvarchar" MaxLength="50" />
+    <Property Name="RankCredits" Type="int" />
+    <Property Name="IsOnline" Type="tinyint" />
+    <Property Name="AddTime" Type="datetime" />
+    <Property Name="HeadImage" Type="nvarchar" MaxLength="100" />
+    <Property Name="HeadSmallImage" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsCanDel" Type="bit" />
+    <Property Name="DelTime" Type="datetime" />
+    <Property Name="IsOtherDel" Type="bit" />
+    <Property Name="OtherDelTime" Type="datetime" />
+    <Property Name="isadmin" Type="bit" />
+  </EntityType>
+  <EntityType Name="UsersFriend">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FriendId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AddTime" Type="datetime" />
+    <Property Name="IsDel" Type="bit" />
+  </EntityType>
+</Schema>

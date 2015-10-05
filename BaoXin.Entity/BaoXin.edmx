@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BaoXinModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="BaoXinModelStoreContainer">
+          <EntitySet Name="ChatInfo" EntityType="BaoXinModel.Store.ChatInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="City" EntityType="BaoXinModel.Store.City" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SendFile" EntityType="BaoXinModel.Store.SendFile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Shop_Photo" EntityType="BaoXinModel.Store.Shop_Photo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Shop_Store" EntityType="BaoXinModel.Store.Shop_Store" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SpeechInfo" EntityType="BaoXinModel.Store.SpeechInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="BaoXinModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UsersFriend" EntityType="BaoXinModel.Store.UsersFriend" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="ChatInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="user_from" Type="varchar" MaxLength="50" />
+          <Property Name="user_to" Type="varchar" MaxLength="50" />
+          <Property Name="content" Type="varchar(max)" />
+          <Property Name="expression" Type="varchar" MaxLength="50" />
+          <Property Name="color" Type="varchar" MaxLength="50" />
+          <Property Name="ispublic" Type="bit" />
+          <Property Name="sendtime" Type="datetime" />
+          <Property Name="IsOpen" Type="bit" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="orderid" Type="int" />
+        </EntityType>
+        <EntityType Name="SendFile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Accept_UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Send_UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Send_File" Type="varchar" MaxLength="100" />
+          <Property Name="Send_Time" Type="smalldatetime" />
+          <Property Name="Send_FileName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Shop_Photo">
+          <Key>
+            <PropertyRef Name="PhotoId" />
+          </Key>
+          <Property Name="PhotoId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PhontName" Type="nchar" MaxLength="100" />
+          <Property Name="PhotoURL" Type="nchar" MaxLength="100" />
+          <Property Name="Note" Type="nchar" MaxLength="10" />
+          <Property Name="BoolYX" Type="bit" />
+        </EntityType>
+        <EntityType Name="Shop_Store">
+          <Key>
+            <PropertyRef Name="StoreId" />
+          </Key>
+          <Property Name="StoreId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StoreNum" Type="nchar" MaxLength="50" />
+          <Property Name="StoreName" Type="nchar" MaxLength="50" />
+          <Property Name="PhotoId" Type="int" />
+          <Property Name="LicenseNumber" Type="nchar" MaxLength="50" />
+          <Property Name="Agreement" Type="nchar" MaxLength="200" />
+          <Property Name="BoolYX" Type="bit" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="PeopleId" Type="int" />
+          <Property Name="BoolPass" Type="bit" />
+        </EntityType>
+        <EntityType Name="SpeechInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FromUser" Type="uniqueidentifier" />
+          <Property Name="SpeachContent" Type="nvarchar(max)" />
+          <Property Name="SpeechImage" Type="nvarchar(max)" />
+          <Property Name="IsVip" Type="tinyint" />
+          <Property Name="State" Type="tinyint" />
+          <Property Name="SumbitTime" Type="datetime" />
+          <Property Name="DelUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="DelTime" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="cityname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sourcecity" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Contactqq" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contactaddr" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="avatar" Type="nvarchar" MaxLength="50" />
+          <Property Name="RankCredits" Type="int" />
+          <Property Name="IsOnline" Type="tinyint" />
+          <Property Name="AddTime" Type="datetime" />
+          <Property Name="HeadImage" Type="nvarchar" MaxLength="100" />
+          <Property Name="HeadSmallImage" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsCanDel" Type="bit" />
+          <Property Name="DelTime" Type="datetime" />
+          <Property Name="IsOtherDel" Type="bit" />
+          <Property Name="OtherDelTime" Type="datetime" />
+          <Property Name="isadmin" Type="bit" />
+        </EntityType>
+        <EntityType Name="UsersFriend">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FriendId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" />
+          <Property Name="IsDel" Type="bit" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6013: 表/视图“db_baoxin.dbo.Shop_People”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+      
+      <EntityType Name="Shop_People">
+        <Property Name="PeopleId" Type="int" />
+        <Property Name="PeopleNum" Type="nchar" MaxLength="50" />
+        <Property Name="PeopleAdd" Type="nchar" MaxLength="20" />
+        <Property Name="PeopleEmail" Type="nchar" MaxLength="15" />
+        <Property Name="PeoplePhone" Type="nchar" MaxLength="15" />
+        <Property Name="PeoplePay" Type="nchar" MaxLength="50" />
+        <Property Name="Note" Type="nchar" MaxLength="10" />
+        <Property Name="BoolLX" Type="bit" />
+      </EntityType>-->
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BaoXinModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BaoXinEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="SendFile" EntityType="BaoXinModel.SendFile" />
+          <EntitySet Name="SpeechInfo" EntityType="BaoXinModel.SpeechInfo" />
+          <EntitySet Name="UsersFriend" EntityType="BaoXinModel.UsersFriend" />
+          <EntitySet Name="Users" EntityType="BaoXinModel.Users" />
+          <EntitySet Name="ChatInfo" EntityType="BaoXinModel.ChatInfo" />
+          <EntitySet Name="City" EntityType="BaoXinModel.City" />
+          <EntitySet Name="Shop_Photo" EntityType="BaoXinModel.Shop_Photo" />
+          <EntitySet Name="Shop_Store" EntityType="BaoXinModel.Shop_Store" />
+        </EntityContainer>
+        <EntityType Name="SendFile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Accept_UserName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Send_UserName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Send_File" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Send_Time" Type="DateTime" Precision="0" />
+          <Property Name="Send_FileName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SpeechInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FromUser" Type="Guid" />
+          <Property Name="SpeachContent" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SpeechImage" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsVip" Type="Byte" />
+          <Property Name="State" Type="Byte" />
+          <Property Name="SumbitTime" Type="DateTime" Precision="3" />
+          <Property Type="String" Name="DelUserId" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DelTime" Precision="3" />
+          <Property Type="Boolean" Name="IsDelete" />
+          <Property Type="String" Name="cityname" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Sourcecity" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UsersFriend">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="FriendId" Type="Guid" Nullable="false" />
+          <Property Name="AddTime" Type="DateTime" Precision="3" />
+          <Property Name="IsDel" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NickName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Contactqq" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Contactaddr" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Mobile" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="avatar" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="RankCredits" />
+          <Property Type="Byte" Name="IsOnline" />
+          <Property Type="DateTime" Name="AddTime" Precision="3" />
+          <Property Type="String" Name="HeadImage" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HeadSmallImage" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsCanDel" />
+          <Property Type="DateTime" Name="DelTime" Precision="3" />
+          <Property Type="Boolean" Name="IsOtherDel" />
+          <Property Type="DateTime" Name="OtherDelTime" Precision="3" />
+          <Property Name="isadmin" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ChatInfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_from" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_to" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="expression" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ispublic" Type="Boolean" />
+          <Property Name="sendtime" Type="DateTime" Precision="3" />
+          <Property Name="IsOpen" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="orderid" />
+        </EntityType>
+        <EntityType Name="Shop_Photo">
+          <Key>
+            <PropertyRef Name="PhotoId" />
+          </Key>
+          <Property Type="Int32" Name="PhotoId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PhontName" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="PhotoURL" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Note" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Boolean" Name="BoolYX" />
+        </EntityType>
+        <EntityType Name="Shop_Store">
+          <Key>
+            <PropertyRef Name="StoreId" />
+          </Key>
+          <Property Type="Int32" Name="StoreId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="StoreNum" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="StoreName" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="PhotoId" />
+          <Property Type="String" Name="LicenseNumber" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Agreement" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Type="Boolean" Name="BoolYX" />
+          <Property Type="Int32" Name="UserId" />
+          <Property Type="Int32" Name="PeopleId" />
+          <Property Type="Boolean" Name="BoolPass" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BaoXinModelStoreContainer" CdmEntityContainer="BaoXinEntities">
+    <EntitySetMapping Name="SendFile">
+      <EntityTypeMapping TypeName="IsTypeOf(BaoXinModel.SendFile)">
+        <MappingFragment StoreEntitySet="SendFile">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Accept_UserName" ColumnName="Accept_UserName" />
+          <ScalarProperty Name="Send_UserName" ColumnName="Send_UserName" />
+          <ScalarProperty Name="Send_File" ColumnName="Send_File" />
+          <ScalarProperty Name="Send_Time" ColumnName="Send_Time" />
+          <ScalarProperty Name="Send_FileName" ColumnName="Send_FileName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpeechInfo">
+      <EntityTypeMapping TypeName="IsTypeOf(BaoXinModel.SpeechInfo)">
+        <MappingFragment StoreEntitySet="SpeechInfo">
+          <ScalarProperty Name="Sourcecity" ColumnName="Sourcecity" />
+                <ScalarProperty Name="cityname" ColumnName="cityname" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DelTime" ColumnName="DelTime" />
+                <ScalarProperty Name="DelUserId" ColumnName="DelUserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FromUser" ColumnName="FromUser" />
+          <ScalarProperty Name="SpeachContent" ColumnName="SpeachContent" />
+          <ScalarProperty Name="SpeechImage" ColumnName="SpeechImage" />
+          <ScalarProperty Name="IsVip" ColumnName="IsVip" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="SumbitTime" ColumnName="SumbitTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersFriend">
+      <EntityTypeMapping TypeName="IsTypeOf(BaoXinModel.UsersFriend)">
+        <MappingFragment StoreEntitySet="UsersFriend">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FriendId" ColumnName="FriendId" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BaoXinModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="isadmin" ColumnName="isadmin" />
+                <ScalarProperty Name="OtherDelTime" ColumnName="OtherDelTime" />
+                <ScalarProperty Name="IsOtherDel" ColumnName="IsOtherDel" />
+                <ScalarProperty Name="DelTime" ColumnName="DelTime" />
+                <ScalarProperty Name="IsCanDel" ColumnName="IsCanDel" />
+                <ScalarProperty Name="HeadSmallImage" ColumnName="HeadSmallImage" />
+                <ScalarProperty Name="HeadImage" ColumnName="HeadImage" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+                <ScalarProperty Name="RankCredits" ColumnName="RankCredits" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Contactaddr" ColumnName="Contactaddr" />
+                <ScalarProperty Name="Contactqq" ColumnName="Contactqq" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatInfo">
+            <EntityTypeMapping TypeName="BaoXinModel.ChatInfo">
+              <MappingFragment StoreEntitySet="ChatInfo">
+                <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+                <ScalarProperty Name="sendtime" ColumnName="sendtime" />
+                <ScalarProperty Name="ispublic" ColumnName="ispublic" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="expression" ColumnName="expression" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="user_to" ColumnName="user_to" />
+                <ScalarProperty Name="user_from" ColumnName="user_from" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="BaoXinModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shop_Photo">
+            <EntityTypeMapping TypeName="BaoXinModel.Shop_Photo">
+              <MappingFragment StoreEntitySet="Shop_Photo">
+                <ScalarProperty Name="BoolYX" ColumnName="BoolYX" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="PhotoURL" ColumnName="PhotoURL" />
+                <ScalarProperty Name="PhontName" ColumnName="PhontName" />
+                <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shop_Store">
+            <EntityTypeMapping TypeName="BaoXinModel.Shop_Store">
+              <MappingFragment StoreEntitySet="Shop_Store">
+                <ScalarProperty Name="BoolPass" ColumnName="BoolPass" />
+                <ScalarProperty Name="PeopleId" ColumnName="PeopleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BoolYX" ColumnName="BoolYX" />
+                <ScalarProperty Name="Agreement" ColumnName="Agreement" />
+                <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+                <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="StoreNum" ColumnName="StoreNum" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

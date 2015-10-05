@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_baoxinModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="db_baoxinEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="ChatInfo" EntityType="db_baoxinModel.ChatInfo" />
+    <EntitySet Name="City" EntityType="db_baoxinModel.City" />
+    <EntitySet Name="dtproperties" EntityType="db_baoxinModel.dtproperties" />
+    <EntitySet Name="SendFile" EntityType="db_baoxinModel.SendFile" />
+    <EntitySet Name="Shop_Photo" EntityType="db_baoxinModel.Shop_Photo" />
+    <EntitySet Name="SpeechInfo" EntityType="db_baoxinModel.SpeechInfo" />
+    <EntitySet Name="Users" EntityType="db_baoxinModel.Users" />
+    <EntitySet Name="UsersFriend" EntityType="db_baoxinModel.UsersFriend" />
+    <EntitySet Name="Shop_Store" EntityType="db_baoxinModel.Shop_Store" />
+    <EntitySet Name="Shop_Goods" EntityType="db_baoxinModel.Shop_Goods" />
+    <EntitySet Name="Shop_People" EntityType="db_baoxinModel.Shop_People" />
+    <EntitySet Name="Shop_Order" EntityType="db_baoxinModel.Shop_Order" />
+  </EntityContainer>
+  <EntityType Name="ChatInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="user_from" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="user_to" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="content" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="expression" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="color" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ispublic" Type="Boolean" />
+    <Property Name="sendtime" Type="DateTime" Precision="3" />
+    <Property Name="IsOpen" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="orderid" Type="Int32" />
+  </EntityType>
+  <EntityType Name="dtproperties">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="property" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="objectid" Type="Int32" />
+    <Property Name="property" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+    <Property Name="value" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="uvalue" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="lvalue" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SendFile">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Accept_UserName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Send_UserName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Send_File" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Send_Time" Type="DateTime" Precision="0" />
+    <Property Name="Send_FileName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Shop_Photo">
+    <Key>
+      <PropertyRef Name="PhotoId" />
+    </Key>
+    <Property Name="PhotoId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="PhontName" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="PhotoURL" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+    <Property Name="Note" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="BoolYX" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="SpeechInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="FromUser" Type="Guid" />
+    <Property Name="SpeachContent" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="SpeechImage" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="IsVip" Type="Byte" />
+    <Property Name="State" Type="Byte" />
+    <Property Name="SumbitTime" Type="DateTime" Precision="3" />
+    <Property Name="DelUserId" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="DelTime" Type="DateTime" Precision="3" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="cityname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Sourcecity" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="NickName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Contactqq" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Contactaddr" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Mobile" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="avatar" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="RankCredits" Type="Int32" />
+    <Property Name="IsOnline" Type="Byte" />
+    <Property Name="AddTime" Type="DateTime" Precision="3" />
+    <Property Name="HeadImage" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="HeadSmallImage" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="IsCanDel" Type="Boolean" />
+    <Property Name="DelTime" Type="DateTime" Precision="3" />
+    <Property Name="IsOtherDel" Type="Boolean" />
+    <Property Name="OtherDelTime" Type="DateTime" Precision="3" />
+    <Property Name="isadmin" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="UsersFriend">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="FriendId" Type="Guid" Nullable="false" />
+    <Property Name="AddTime" Type="DateTime" Precision="3" />
+    <Property Name="IsDel" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Shop_Store">
+    <Key>
+      <PropertyRef Name="StoreId" />
+    </Key>
+    <Property Type="Int32" Name="StoreId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="StoreNum" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="StoreName" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="PhotoId" />
+    <Property Type="String" Name="LicenseNumber" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="Agreement" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Type="Boolean" Name="BoolYX" />
+    <Property Type="String" Name="StoreUser" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="PeopleId" />
+    <Property Type="Boolean" Name="BoolPass" />
+    <Property Type="DateTime" Name="AddTime" Precision="3" />
+    <Property Type="DateTime" Name="PassTime" Precision="3" />
+    <Property Type="Int32" Name="StoreOrde" />
+  </EntityType>
+  <EntityType Name="Shop_Goods">
+    <Key>
+      <PropertyRef Name="GoodsId" />
+    </Key>
+    <Property Type="Int32" Name="GoodsId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GoodsSnum" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="GoodsName" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Type="Decimal" Name="GoodsPrice" Precision="10" Scale="2" />
+    <Property Type="Int16" Name="Goodsnumber" />
+    <Property Type="Int32" Name="StoreId" />
+    <Property Type="Int32" Name="PhotoId" />
+    <Property Type="DateTime" Name="AddTime" Precision="3" />
+    <Property Type="Boolean" Name="BoolYX" />
+  </EntityType>
+  <EntityType Name="Shop_People">
+    <Key>
+      <PropertyRef Name="PeopleId" />
+    </Key>
+    <Property Type="Int32" Name="PeopleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="PeopleNum" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PeopleName" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PeopleAdd" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PeopleEmail" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PeoplePhone" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PeoplePay" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Note" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="BoolLX" />
+  </EntityType>
+  <EntityType Name="Shop_Order">
+    <Key>
+      <PropertyRef Name="ShopOrderID" />
+    </Key>
+    <Property Type="Int32" Name="ShopOrderID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="StoreId" />
+    <Property Type="Int32" Name="PeopleId_buy" />
+    <Property Type="Int32" Name="GoodsId" />
+    <Property Type="Int32" Name="buyNum" />
+    <Property Type="DateTime" Name="butTime" Precision="3" />
+    <Property Type="Boolean" Name="BoolYX" />
+    <Property Type="Boolean" Name="BoolSeng" />
+  </EntityType>
+</Schema>

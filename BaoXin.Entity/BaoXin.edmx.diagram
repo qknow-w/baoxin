@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ff7aeb8184d44ee5a5789e9fd9092b34" Name="关系图1">
+        <EntityTypeShape EntityType="BaoXinModel.SendFile" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaoXinModel.SpeechInfo" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaoXinModel.UsersFriend" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaoXinModel.Users" Width="1.5" PointX="5.48146297292852" PointY="22.818761702076888" />
+        <EntityTypeShape EntityType="BaoXinModel.ChatInfo" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BaoXinModel.City" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BaoXinModel.Shop_Photo" Width="1.5" PointX="8.8964048106672262" PointY="26.327012744884478" />
+        <EntityTypeShape EntityType="BaoXinModel.Shop_Store" Width="1.5" PointX="8.7501074246829873" PointY="18.7211271760618" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

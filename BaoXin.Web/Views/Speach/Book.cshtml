@@ -1,0 +1,209 @@
+@{
+    Layout = null;
+}
+@using BaoXin.BLL
+@model List<BaoXin.Entity.SpeechInfoPart>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>无标题文档</title>
+    <link href="/Content/css/style.css" rel="stylesheet" />
+    <link href="/Content/css/reset.css" rel="stylesheet" />
+    <script src="~/SWFUpload/swfupload.js"></script>
+    <script src="~/SWFUpload/handlers.js"></script>
+    <script src="/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/utils.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            initData();
+            send();
+
+        });
+        //--------------------------------------------初始化发言记录-------------------------
+
+        function initData() {
+            var isLogin = '@WorkContext.Uid.Equals(Guid.Empty)';
+            var contentdata = "";
+            if (isLogin == 'False') {
+                $.post("/Speach/GetRecords", null, function (data) {
+                    if (data.IsSuccess) {
+                        TableData = data.TData;
+                        for (var i = 0; i < TableData.length; i++) {
+                            contentdata += "<li style='color:blue'>";
+                            contentdata += $.trim(TableData[i].NickName) + "(" + formatDate(TableData[i].SumbitTime) + ")";
+                            contentdata += "</li>";
+                            contentdata += "<li>";
+                            contentdata += TableData[i].SpeachContent;
+                            contentdata += "</li>";
+                            if (TableData[i].SpeechImage != null) {
+                                contentdata += "<li>";
+                                contentdata += "<img height='50px;' width='100px;' src='" + TableData[i].SpeechImage + "' />";
+                                contentdata += "</li>";
+                            }
+
+                        }
+                        $("#speakContent").append(contentdata);
+                    }
+                }, "json");
+
+            } else {
+                $('#speakContent li').remove();
+
+            }
+        }
+        //------------------------------------------发送：---------------------------------------------------
+        function send() {
+            $("#btnSend").click(function () {
+                var content = $.trim($("#sendContent").val());
+                var uploadImage = $("#uploadImage").attr("src");
+                if (uIsNull(content)) {
+                    alert("发送内容不能为空!");
+                    return;
+                }
+                $.post("/Speach/Save", { SpeachContent: content, SpeechImage: uploadImage }, function (data) {
+                    var basicinfo = $.trim("@WorkContext.NickName") + "(" + uGetDateStr(0) + ")" + "\n";
+                    if (data.state == "ok") {
+                        var nowValue = "";
+                        nowValue += "<li style='color:blue'>";
+                        nowValue += basicinfo;
+                        nowValue += "</li>";
+                        nowValue += "<li>";
+                        nowValue += content;
+                        nowValue += "</li>";
+                        if (uploadImage !== "") {
+                            nowValue += "<li>";
+                            nowValue += "<img height='50px;' width='100px;' src='" + uploadImage + "' />";
+                            nowValue += "</li>";
+                        }
+                        $("#speakContent").append(nowValue);
+                        $("#sendContent").val('');
+                        $("#uploadImage").attr("src", '');
+                    } else {
+                        alert(data.content);
+                    }
+                }, "json");
+            });
+        }
+        //-----------------------------------------上传图片
+
+        var swfu;
+        window.onload = function () {
+            swfu = new SWFUpload({
+                // Backend Settings
+                upload_url: "/Unity/UploadSpeechImage",
+                post_params: {
+                    "ASPSESSID": "@Session.SessionID"
+                },
+                // File Upload Settings
+                file_size_limit: "300 KB",
+                file_types: "*.jpg",
+                file_types_description: "JPG Images",
+                file_upload_limit: 0,
+
+                swfupload_preload_handler: preLoad,
+                swfupload_load_failed_handler: loadFailed,
+                file_queue_error_handler: fileQueueError,
+                file_dialog_complete_handler: fileDialogComplete,
+                upload_progress_handler: uploadProgress,
+                upload_error_handler: uploadError,
+                upload_success_handler: getUpImage,
+                // Button settings
+                //   button_image_url: "/SWFUpload/images/XPButtonNoText_160x22.png",
+                button_placeholder_id: "btnUploadImage",
+                button_width: 30,
+                button_height: 35,
+                button_text: '<span class="button" style="margin-top:5px;">图片</span>',
+                button_text_style: '.button { font-family: Helvetica, Arial, sans-serif; font-size: 14pt; }',
+                button_text_top_padding: 8,
+                button_text_left_padding: 1,
+                // Flash Settings
+                flash_url: "/SWFUpload/swfupload.swf", // Relative to this file
+                flash9_url: "/SWFUpload/swfupload_FP9.swf", // Relative to this file
+                custom_settings: {
+                    upload_target: "divFileProgressContainer"
+                },
+            });
+        }
+        function getUpImage(file, serverData) {
+            var obj = eval('(' + serverData + ')');
+            if (obj.state == "ok") {
+                //  $(".zhuce_kuang4").css("background-image", "url('" + obj.content + "')");
+                var img = "   <img border='0' height='50' width='50' id='uploadImage'  src='" + obj.content + "'/> ";
+                $("#licontent").append(img);
+                // $("#uploadImage").attr("src", obj.content);
+                //        $("#testImageUrl").attr("src", obj.content);
+            } else {
+                alert(obj.content);
+            }
+
+        }
+    </script>
+</head>
+<body style="background-color: White;">
+    <div class="big_kuang">
+        <ul>
+            <li class="top_x">
+                <ul>
+                    <a href="#">
+                        <li class="top_x4"></li>
+                    </a>
+                    <a href="#" title="上传图片">
+                        <li class="top_x3" title="上传图片"></li>
+                    </a>
+                    <a href="#">
+                        <li class="top_x2"></li>
+                    </a>
+                    <a href="#">
+
+                        <li class="top_x1"></li>
+                    </a>
+                </ul>
+            </li>
+            <li class="top_y1">
+                <ul style="line-height: 20px; width: 607px; height: 304px; text-align: left; overflow: auto" id="speakContent"></ul>
+
+            </li>
+            <li class="top_w">
+                <ul>
+                    <a href="#">
+                        <li class="top_z_1"></li>
+                    </a>
+                    <a href="#">
+                        <li class="top_z_2"></li>
+                    </a>
+                    <a href="javascript:;" id="btnUploadImage" style="padding-top: 5px">
+                        <li class="top_z_3"></li>
+                    </a>
+                    <a href="#">
+                        <li class="top_z_4"></li>
+                    </a>
+                    <a href="#">
+                        <li class="top_z_5"></li>
+                    </a>
+                    <a href="#">
+                        <li class="top_z_6"></li>
+                    </a>
+                    <li id="licontent">
+
+                        <div id="sendContent" contenteditable="true" style="background-color:#ff6a00;float:left;"></div>
+
+
+
+
+                    </li>
+
+                </ul>
+            </li>
+            <li class="top_z">
+                <ul>
+                    <a href="#">
+                        <li class="top_z_7" id="btnSend"></li>
+                    </a>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

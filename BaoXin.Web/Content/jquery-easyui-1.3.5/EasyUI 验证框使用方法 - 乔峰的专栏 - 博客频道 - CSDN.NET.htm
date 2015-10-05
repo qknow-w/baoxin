@@ -1,0 +1,831 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0054)http://blog.csdn.net/qwlovedzm/article/details/6676525 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" async="" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/ga.js"></script><script id="allmobilize" charset="utf-8" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/allmobilize.min.js"></script><style type="text/css"></style>
+ <meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" media="handheld" href="http://blog.csdn.net/qwlovedzm/article/details/6676525#">
+
+    <title>EasyUI 验证框使用方法 - 乔峰的专栏
+        - 博客频道 - CSDN.NET</title>
+    
+    <meta name="description" content="使用过程中的一积累，备查。 EasyUI 验证框使用方法://***************************missingMessage：未填写时显示的信息validType：验证类型见下示例invalidMessage：无效的数据类型时显示的信息">
+    <script src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/ad.js"></script>
+        <!--new top-->
+       
+        <link rel="stylesheet" href="http://static.csdn.net/public/common/toolbar/css/index.css">
+        <!--new top-->
+
+    <link rel="Stylesheet" type="text/css" href="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/style.css">
+    <link id="RSSLink" title="RSS" type="application/rss+xml" rel="alternate" href="http://blog.csdn.net/qwlovedzm/rss/list">
+    <link rel="shortcut icon" href="http://csdnimg.cn/public/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/default.css">
+ 
+
+
+<script src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/share.js"></script><link href="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/bdsstyle.css" rel="stylesheet" type="text/css"><script type="text/javascript" charset="utf-8" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/tracking.js"></script><script type="text/javascript" charset="utf-8" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/main.js"></script><link rel="stylesheet" type="text/css" href="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/style(1).css"><link type="text/css" rel="stylesheet" href="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/style(2).css"><script src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/logger.js"></script><link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style0_16.css?v=f4b44e79.css"></head>
+<body style="zoom: 1;"><iframe frameborder="0" style="display: none;"></iframe>
+    
+   
+      <!--new top-->
+    <script id="toolbar-tpl-scriptId" fixed="true" prod="blog" skin="black" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/html.js" type="text/javascript"></script><div class="csdn-toolbar csdn-toolbar-skin-black ">        <div class="container row center-block ">          <div class="col-md-3 pull-left logo clearfix"><a href="http://www.csdn.net/?ref=toolbar" title="CSDN首页" target="_blank" class="icon"></a><a title="频道首页" href="http://blog.csdn.net/?ref=toolbar_logo" target="_blank" class="img blog-icon"></a></div>          <div class="pull-right login-wrap unlogin">            <ul class="btns">              <li class="loginlink"><a href="https://passport.csdn.net/account/login?ref=toolbar" target="_top">登录&nbsp;</a>|<a target="_top" href="https://passport.csdn.net/account/register?ref=toolbar">&nbsp;注册</a></li>              <li class="search">                <div class="icon on-search-icon">                  <div class="wrap">                    <div class="curr-icon-wrap">                      <div class="curr-icon"></div>                    </div>                    <form action="http://so.csdn.net/search" method="get" target="_blank">                      <input type="hidden" value="toolbar" name="ref" accesskey="2">                      <div class="border">                        <input placeholder="搜索" type="text" value="" name="q" accesskey="2"><span class="icon-enter-sm"></span>                      </div>                    </form>                  </div>                </div>              </li>              <li class="favor">                <div class="icon on-favor-icon">                  <div class="wrap">                    <div class="curr-icon-wrap">                      <div class="curr-icon"></div>                    </div>                    <div style="display:none;" class="favor-success"><span class="msg">收藏成功</span>                      <div class="btns"><span class="btn btn-primary ok">确定</span></div>                    </div>                    <div style="display:none;" class="favor-failed"><span class="icon-danger-lg"></span><span class="msg">收藏失败，请重新收藏</span>                      <div class="btns"><span class="btn btn-primary ok">确定</span></div>                    </div>                    <form role="form" class="form-horizontal favor-form">                      <div class="form-group">                        <div class="clearfix">                          <label for="input-title" class="col-sm-2 control-label">标题</label>                          <div class="col-sm-10">                            <input id="inputTitle" type="text" placeholder="" class="title form-control">                          </div>                        </div>                        <div class="alert alert-danger"><strong></strong>标题不能为空</div>                      </div>                      <div class="form-group">                        <label for="input-url" class="col-sm-2 control-label">网址</label>                        <div class="col-sm-10">                          <input id="input-url" type="text" placeholder="" class="url form-control">                        </div>                      </div>                      <div class="form-group">                        <label for="input-tag" class="col-sm-2 tag control-label">标签</label>                        <div class="col-sm-10">                          <input id="input-tag" type="text" class="form-control tag">                        </div>                      </div>                      <div class="form-group">                        <label for="input-description" class="description col-sm-2 control-label">摘要</label>                        <div class="col-sm-10">                          <textarea id="input-description" class="form-control description"></textarea>                        </div>                      </div>                      <div class="form-group">                        <div class="col-sm-offset-2 col-sm-10 ft">                          <div class="col-sm-4 pull-left">                            <div class="checkbox">                              <label>                                <input type="checkbox" name="share" checked="checked" class="share">公开                              </label>                            </div>                          </div>                          <div class="col-sm-8 pull-right favor-btns">                            <button type="button" class="cancel btn btn-default">取消</button>                            <button type="submit" class="submit btn btn-primary">收藏</button>                          </div>                        </div>                      </div>                    </form>                  </div>                </div>              </li>              <li class="notify">                <div style="display:none" class="number"></div>                <div style="display:none" class="icon-hasnotes-sm"></div>                <div id="header_notice_num"></div>                <div class="icon on-notify-icon">                  <div class="wrap">                    <div class="curr-icon-wrap">                      <div class="curr-icon"></div>                    </div>                    <div id="note1" class="csdn_note">                      <div class="box"></div>                    <iframe src="about:block" frameborder="0" allowtransparency="true" style="z-index:-1;position:absolute;top:0;left:0;width:100%;height:100%;background:transparent"></iframe></div>                  </div>                </div>              </li>              <li class="ugc">                <div class="icon on-ugc-icon">                  <div class="wrap clearfix">                    <div class="curr-icon-wrap">                      <div class="curr-icon"></div>                    </div>                    <dl>                      <dt><a href="http://geek.csdn.net/news/expert?ref=toolbar" target="_blank" class="p-news clearfix"><em class="icon"></em><span>分享资讯</span></a></dt>                      <dt><a href="http://share.csdn.net/slides/new?ref=toolbar" target="_blank" class="p-doc clearfix"><em class="icon"></em><span>传PPT/文档</span></a></dt>                      <dt><a href="http://bbs.csdn.net/topics/new?ref=toolbar" target="_blank" class="p-ask clearfix"><em class="icon"></em><span>提问题</span></a></dt>                      <dt><a href="http://write.blog.csdn.net/postedit?ref=toolbar" target="_blank" class="p-blog clearfix"><em class="icon"></em><span>写博客</span></a></dt>                      <dt><a href="http://u.download.csdn.net/upload?ref=toolbar" target="_blank" class="p-src clearfix"><em class="icon"></em><span>传资源</span></a></dt>                      <dt><a href="https://code.csdn.net/projects/new?ref=toolbar" target="_blank" class="c-obj clearfix"><em class="icon"></em><span>创建项目</span></a></dt>                      <dt><a href="https://code.csdn.net/snippets/new?ref=toolbar" target="_blank" class="c-code clearfix"><em class="icon"></em><span>创建代码片</span></a></dt>                    </dl>                  </div>                </div>              </li>              <li class="profile">                <div class="icon on-profile-icon"><img src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/100x100.jpg" class="curr-icon-img">                  <div class="wrap clearfix">                    <div class="curr-icon-wrap">                      <div class="curr-icon"></div>                    </div>                    <div class="bd">                      <dl class="clearfix">                        <dt class="pull-left img"><a target="_blank" href="http://my.csdn.net/?ref=toolbar" class="avatar"><img src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/100x100.jpg"></a></dt>                        <dd class="info"><a target="_blank" href="http://my.csdn.net/?ref=toolbar" class="nickname"></a><a class="set-nick" href="https://passport.csdn.net/account/profile">设置昵称<span class="write-icon"></span></a><span class="dec"><a class="fill-dec" href="http://my.csdn.net/" target="_blank">编辑自我介绍，让更多人了解你<span class="write-icon"></span></a></span></dd>                      </dl>                    </div>                    <div class="ft clearfix"><a target="_blank" href="http://my.csdn.net/my/account/changepwd?ref=toolbar" class="pull-left"><span class="icon-cog"></span>帐号设置</a><a href="https://passport.csdn.net/account/logout?ref=toolbar" target="_top" class="pull-right "><span class="icon-signout"></span><span class="out">退出</span></a></div>                  </div>                </div>              </li>              <li class="apps">                <div class="icon on-apps-icon">                  <div class="wrap clearfix">                    <div class="curr-icon-wrap">                      <div class="curr-icon"></div>                    </div>                  <div class="detail">                    <dl>                      <dt>                        <h5>社区</h5>                      </dt>                      <dd> <a href="http://blog.csdn.net/?ref=toolbar" target="_blank">博客</a></dd>                      <dd> <a href="http://bbs.csdn.net/?ref=toolbar" target="_blank">论坛</a></dd>                      <dd> <a href="http://download.csdn.net/?ref=toolbar" target="_blank">下载</a></dd>                      <dd><a href="http://share.csdn.net/?ref=toolbar" target="_blank">Share</a></dd>                      <dd><a href="http://geek.csdn.net/?ref=toolbar" target="_blank">极客头条</a></dd>                    </dl>                  </div>                  <div class="detail">                    <dl>                      <dt>                        <h5>服务</h5>                      </dt>                      <dd> <a href="https://code.csdn.net/?ref=toolbar" target="_blank">CODE</a></dd>                      <dd> <a href="http://hero.csdn.net/?ref=toolbar" target="_blank">英雄会</a></dd>                      <dd> <a href="http://huiyi.csdn.net/?ref=toolbar" target="_blank">活动</a></dd>                      <dd> <a href="http://www.csto.com/?ref=toolbar" target="_blank">CSTO</a></dd>                    </dl>                  </div>                  <div class="detail last">                    <dl>                      <dt>                        <h5>俱乐部</h5>                      </dt>                      <dd> <a href="http://cto.csdn.net/?ref=toolbar" target="_blank">CTO俱乐部</a></dd>                      <dd> <a href="http://student.csdn.net/?ref=toolbar" target="_blank">高校俱乐部</a></dd>                    </dl>                  </div>                </div>              </div>            </li>            </ul>          </div>        </div>    </div>
+     <!--new top-->
+    <div id="container">
+        <div id="header">
+    <div class="header">
+        <div id="blog_title">
+            <h2>
+                <a href="http://blog.csdn.net/qwlovedzm">乔峰的专栏</a></h2>
+            <h3>共享、共勉、共同努力</h3>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+</div>
+<div id="navigator">
+    <div class="navigator_bg">
+    </div>
+    <div class="navigator">
+        <ul>
+                <li id="btnContents"><a href="http://blog.csdn.net/qwlovedzm?viewmode=contents"><span onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_mulu&#39;])">
+                    <img src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/ico_list.gif">目录视图</span></a></li>
+                <li id="btnView"><a href="http://blog.csdn.net/qwlovedzm?viewmode=list"><span onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_zhaiyao&#39;])">
+                    <img src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/ico_summary.gif">摘要视图</span></a></li>
+                <li id="btnRss"><a href="http://blog.csdn.net/qwlovedzm/rss/list"><span onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_RSS&#39;])">
+                    <img src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/ico_rss.gif">订阅</span></a></li>                
+
+            </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var username = "qwlovedzm";
+    var _blogger = username;
+    var blog_address = "http://blog.csdn.net/qwlovedzm";
+    var static_host = "http://static.blog.csdn.net";
+    var currentUserName = "";  
+</script>
+
+        <div id="body">
+            <div id="main">
+                <div class="main">
+                        <div class="ad_class">
+<div class="notice tracking-ad" data-mod="popu_3"> 
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/38514369" target="_blank">
+<font color="blue">7月推荐文章汇总
+</font></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="http://download.csdn.net/album/detail/257" target="_blank">
+<font color="red">Android 精彩案例</font></a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/38418263" target="_blank">
+<font color="blue">【独具慧眼 推荐有礼】找出您心中的技术大牛
+</font></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="http://blog.csdn.net/blogdevteam/article/details/37874361" target="_blank">博文大赛获奖名单公布 
+<font color="red"> 
+</font></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="http://blog.csdn.net/csdnproduct/article/details/38110573" target="_blank">
+<font color="blue">关注社区微信得下载分
+</font></a>
+
+
+</div>                        </div>
+                          
+<link href="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/comment1.css" type="text/css" rel="stylesheet">
+<link href="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/style1.css" type="text/css" rel="stylesheet">
+<script language="JavaScript" type="text/javascript" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/jquery.cookie.js"></script>
+<script type="text/javascript" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/main(1).js"></script>
+<div id="article_details" class="details">
+    <div class="article_title">   
+         <span class="ico ico_type_Repost"></span>
+
+
+    <h1>
+        <span class="link_title"><a href="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET.htm">
+        EasyUI 验证框使用方法
+        </a></span>
+    </h1>
+</div>
+
+    <div class="article_manage">
+        <span class="link_categories">
+        分类：
+            <a href="http://blog.csdn.net/qwlovedzm/article/category/263996" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_fenlei&#39;]);">技术心得(C#与JAVA)</a> 
+            <a href="http://blog.csdn.net/qwlovedzm/article/category/263998" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_fenlei&#39;]);">成功经验</a> 
+        </span>
+    <span class="link_postdate">2011-08-10 17:22</span>
+    <span class="link_view" title="阅读次数">16058人阅读</span>
+    <span class="link_comments" title="评论次数"><a href="http://blog.csdn.net/qwlovedzm/article/details/6676525#comments" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_pinglun&#39;])">评论</a>(1)</span>
+    <span class="link_collect"><a href="javascript:void(0);" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_shoucang&#39;]);collectArticle(&#39;EasyUI 验证框使用方法&#39;,&#39;6676525&#39;);return false;" title="收藏">收藏</a></span>
+    <span class="link_report"><a href="http://blog.csdn.net/qwlovedzm/article/details/6676525#report" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_jubao&#39;]);report(6676525,2);return false;" title="举报">举报</a></span>
+    
+</div>
+<div class="tag2box"><a href="http://www.csdn.net/tag/class" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_tag&#39;]);">class</a><a href="http://www.csdn.net/tag/function" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_tag&#39;]);">function</a><a href="http://www.csdn.net/tag/date" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_tag&#39;]);">date</a><a href="http://www.csdn.net/tag/button" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_tag&#39;]);">button</a><a href="http://www.csdn.net/tag/input" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_tag&#39;]);">input</a><a href="http://www.csdn.net/tag/server" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_tag&#39;]);">server</a></div>
+
+  
+    
+<div id="article_content" class="article_content">
+
+&nbsp;
+<p>使用过程中的一积累，备查。</p>
+<p>&nbsp;</p>
+<p>EasyUI 验证框使用方法:<br>
+//***************************<br>
+missingMessage：未填写时显示的信息<br>
+validType：验证类型见下示例<br>
+invalidMessage：无效的数据类型时显示的信息<br>
+required="true" 必填项<br>
+class="easyui-validatebox" 文本验证<br>
+class="easyui-numberbox" 数字验证<br>
+*****************************//</p>
+<p>0、调用数据验证方法<br>
+&nbsp;&nbsp;&nbsp; return $("#form1").form('validate');<br>
+&nbsp;<br>
+&nbsp;示例：<br>
+&lt;asp:Button ID="btn_Save" runat="server" Text="保存" OnClick ="btn_Save_Click" OnClientClick="return $("#form1").form('validate');" /&gt;&nbsp;
+<br>
+&nbsp;&nbsp;<br>
+1、验证是否必填<br>
+class="easyui-validatebox" missingMessage="xxx必须填写"<br>
+2、验证字符串长度<br>
+class="easyui-validatebox" missingMessage="xxx必须填写少于10个字符" validType="length[0,2]" invalidMessage="不能超过2个字符！"<br>
+示例：<br>
+&lt;input class="easyui-validatebox" required="true" missingMessage="姓名必须填写" size="10" type="text" name="ARealName"&gt;&lt;/input&gt;</p>
+<p>3、验证数字必须是5.5-20之间 precision="2"表示是2为小数<br>
+class="easyui-numberbox" min="5.5" max="20" precision="2" required="true" missingMessage="必须填写5.5~10之间的数字"<br>
+4、验证必须是日期yyyy-MM-dd（只能选择不可编辑）<br>
+&lt;script&gt;<br>
+&nbsp;$.fn.datebox.defaults.formatter = function (date) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var y = date.getFullYear();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var m = date.getMonth() + 1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var d = date.getDate();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return y + '-' + (m &lt; 10 ? '0' + m : m) + '-' + (d &lt; 10 ? '0' + d : d);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $.fn.datebox.defaults.parser = function (s) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (s) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var a = s.split('-');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var d = new Date(parseInt(a[0]), parseInt(a[1]) - 1, parseInt(a[2]));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return d;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return new Date();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; };<br>
+&lt;/script&gt;<br>
+class="easyui-datebox" required="true" missingMessage="日期必须填写"&nbsp; editable="false"<br>
+//如果需要填写其他格式的类型请自行修改formatter函数</p>
+<p>5、验证必须是邮件<br>
+class="easyui-validatebox" missingMessage="邮件必须填写" validType="email" invalidMessage="请填写正确的邮件格式"</p>
+<p>6、页面时间段判断 name为s1的时间必须大于name为s2的时间 s3必须大于s2<br>
+&lt;script&gt;<br>
+$.extend($.fn.validatebox.defaults.rules,{<br>
+&nbsp;&nbsp;&nbsp;TimeCheck:{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;validator:function(value,param){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var s = $("input[name="+param[0]+"]").val();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//因为日期是统一格式的所以可以直接比较字符串 否则需要Date.parse(_date)转换<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return value&gt;=s;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;message:'非法数据'<br>
+&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;});<br>
+&lt;/script&gt;<br>
+&lt;input name="s1" class="easyui-datebox" required="true" missingMessage="日期必须填写" editable="false"&gt;&lt;/input&gt;<br>
+&lt;input name="s2" class="easyui-datebox" required="true" validType="TimeCheck['s1']" invalidMessage="s1必须大于s2" editable="false"&gt;&lt;/input&gt;<br>
+&lt;input name="s3" class="easyui-datebox" required="true" validType="TimeCheck['s2']" editable="false"&gt;&lt;/input&gt;</p>
+<p><br>
+7、询问对话框提交：<br>
+function Confirmbtn(msg, control) {<br>
+$.messager.confirm('确认', msg, function (r) {<br>
+&nbsp;&nbsp;&nbsp; if (r) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; __doPostBack("ctl00$ContentPH_Main$Button1", "");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //alert('aa');<br>
+&nbsp;&nbsp;&nbsp; }<br>
+});<br>
+return false;<br>
+} </p>
+<p>OnClientClick="return Confirmbtn('确认吗？', this);</p>
+
+</div>
+
+
+
+
+<!-- Baidu Button BEGIN -->
+
+<div class="bdsharebuttonbox bdshare-button-style0-16" style="float: right;" data-bd-bind="1407978616749">
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6676525#" class="bds_more" data-cmd="more" style="background-position:0 0 !important; background-image: url(http://bdimg.share.baidu.com/static/api/img/share/icons_0_16.png?v=d754dcc0.png) !important"></a>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6676525#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间" style="background-position:0 -52px !important"></a>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6676525#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博" style="background-position:0 -104px !important"></a>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6676525#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博" style="background-position:0 -260px !important"></a>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6676525#" class="bds_renren" data-cmd="renren" title="分享到人人网" style="background-position:0 -208px !important"></a>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6676525#" class="bds_weixin" data-cmd="weixin" title="分享到微信" style="background-position:0 -1612px !important"></a>
+</div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "1", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+<!-- Baidu Button END -->
+
+<!--192.168.100.35-->
+<ul class="article_next_prev">
+            <li class="prev_article"><span onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_shangyipian&#39;]);location.href=&#39;/qwlovedzm/article/details/6676513&#39;;">上一篇</span><a href="http://blog.csdn.net/qwlovedzm/article/details/6676513" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_shangyipian&#39;])">asp.net页面回传与js调用服务端事件、PostBack的原理</a></li>
+            <li class="next_article"><span onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_xiayipian&#39;]);location.href=&#39;/qwlovedzm/article/details/6695171&#39;;">下一篇</span><a href="http://blog.csdn.net/qwlovedzm/article/details/6695171" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_xiayipian&#39;])">linq to sql 插入值后，如何取回自增的ID</a></li>
+</ul>
+
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1536434" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/bds_s_v2.js"></script>
+
+<script type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+
+
+</div>
+      <dl class="blog-associat-tag">
+        <dt>主题推荐</dt>
+        <dd>
+                <a href="http://www.csdn.net/tag/easyui" target="_blank" class="blog-tage-red">easyui</a> 
+                <a href="http://www.csdn.net/tag/%E5%AF%B9%E8%AF%9D%E6%A1%86" target="_blank" class="blog-tage-red">对话框</a> 
+                <a href="http://www.csdn.net/tag/%E9%82%AE%E4%BB%B6" target="_blank" class="blog-tage-red">邮件</a> 
+                <a href="http://www.csdn.net/tag/%E6%95%B0%E6%8D%AE" target="_blank" class="blog-tage-red">数据</a> 
+                <a href="http://www.csdn.net/tag/server" target="_blank" class="blog-tage-red">server</a> 
+        </dd>
+    </dl> 
+
+
+<dl class="blog-ass-articl tracking-ad" data-mod="popu_36" id="res-relatived"> 
+     <dt><span>猜你在找</span></dt>    
+<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="http://blog.csdn.net/li_xiao_ming/article/details/8364253" title="EasyUI学习之easyui datagrid 批量编辑和提交" strategy="CFRecommendAlgorithm" target="_blank">EasyUI学习之easyui datagrid 批量编辑和提交</a></dd><dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="http://blog.csdn.net/zyujie/article/details/7946859" title="jquery combotree解决点击文字不能展开下级的问题" strategy="CFRecommendAlgorithm" target="_blank">jquery combotree解决点击文字不能展开下级的问题</a></dd><dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="http://blog.csdn.net/Metal1/article/details/30456283" title="jquery easyui 全部图标" strategy="CFRecommendAlgorithm" target="_blank">jquery easyui 全部图标</a></dd><dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="http://blog.csdn.net/liyong199012/article/details/8161621" title="HTML中select标签单选多选详解" strategy="CFRecommendAlgorithm" target="_blank">HTML中select标签单选多选详解</a></dd><dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="http://blog.csdn.net/iijse/article/details/6156922" title="SVN使用补遗-Entry already exists错误" strategy="CFRecommendAlgorithm" target="_blank">SVN使用补遗-Entry already exists错误</a></dd><dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="http://blog.csdn.net/kiwi_coder/article/details/17467965" title="丢弃重口味的xml配置--spring4用groovy配置bean" strategy="CFRecommendAlgorithm" target="_blank">丢弃重口味的xml配置--spring4用groovy配置bean</a></dd><dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="http://blog.csdn.net/djsl6071/article/details/1583833" title="windows中java实现的串口通信" strategy="CFRecommendAlgorithm" target="_blank">windows中java实现的串口通信</a></dd><dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="http://blog.csdn.net/sh524555685/article/details/7493596" title="为ASP.NET MVC应用创建Entity Framework数据模型(1/10)" strategy="CFRecommendAlgorithm" target="_blank">为ASP.NET MVC应用创建Entity Framework数据模型(1/10)</a></dd><dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="http://blog.csdn.net/kazeik/article/details/8545049" title="利用ScheduledThreadPoolExecutor定时执行任务" strategy="CFRecommendAlgorithm" target="_blank">利用ScheduledThreadPoolExecutor定时执行任务</a></dd><dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="http://blog.csdn.net/happyangelling/article/details/6413584" title="java集群" strategy="CFRecommendAlgorithm" target="_blank">java集群</a></dd></dl>
+
+<script type="text/javascript">
+    var searchtitletags = 'EasyUI 验证框使用方法' + ',' + 'easyui,对话框,邮件,数据,server';
+    searchService({
+        index: 'blog',
+        query: searchtitletags,
+        from: 10,
+        size: 10,
+        appendTo: '#res-relatived',
+        url: 'recommend',
+        his: 2,
+        client: "blog_cf_enhance",
+        tmpl: '<dd style="background:url(http://static.blog.csdn.net/skin/default/images/blog-dot-red3.gif) no-repeat 0 10px;"><a href="#{ url }" title="#{ title }" strategy="#{ strategy }">#{ title }</a></dd>'
+    });
+
+ </script>   
+
+
+    <div id="ad_cen">
+   
+          <script type="text/javascript">
+              new Ad(4, 'ad_cen');
+          </script>
+    <iframe id="ad_frm_0" frameborder="0" scrolling="no" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/ad(1).htm" style="border-width: 0px; overflow: hidden; width: 738px; height: 90px;"></iframe></div>
+<div class="comment_class">
+    <div id="comment_title" class="panel_head">
+        <span class="see_comment">查看评论</span><a name="comments"></a></div>
+    <div id="comment_list"><dl class="comment_item comment_topic" id="comment_item_3840953"><dt class="comment_head" floor="1">1楼 <span class="user"><a class="username" href="http://blog.csdn.net/yaerfeng" target="_blank">yaerfeng</a> <span class="ptime">2014-05-15 00:21发表</span>  <a href="http://blog.csdn.net/qwlovedzm/article/details/6676525#reply" class="cmt_btn reply" title="回复">[回复]</a> <span class="comment_manage" style="display:none;" commentid="3840953" username="yaerfeng"> <a href="http://blog.csdn.net/qwlovedzm/article/details/6676525#quote" class="cmt_btn quote" title="引用">[引用]</a> <a href="http://blog.csdn.net/qwlovedzm/article/details/6676525#report" class="cmt_btn report" title="举报">[举报]</a></span></span></dt><dd class="comment_userface"><a href="http://blog.csdn.net/yaerfeng" target="_blank"><img src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/3_yaerfeng.jpg" width="40" height="40"></a></dd><dd class="comment_body">easyui代码下载：http://www.zuidaima.com/share/search.htm?key=easyui</dd></dl><div class="clear"></div></div>
+    <div id="comment_bar" style="display: none;">
+    </div>
+    <div id="comment_form"><div class="guest_link">您还没有登录,请<a href="javascript:void(0);" onclick="javascript:csdn.showLogin(function (dat) {js_logined(dat.data.userName);});">[登录]</a>或<a href="http://passport.csdn.net/account/register?from=http%3A%2F%2Fblog.csdn.net%2Fqwlovedzm%2Farticle%2Fdetails%2F6676525">[注册]</a></div></div>
+
+    <div class="announce">
+        * 以上用户言论只代表其个人观点，不代表CSDN网站的观点或立场<a name="reply"></a><a name="quote"></a></div>
+</div>
+
+<script type="text/javascript">
+    var fileName = '6676525';
+    var commentscount = 1;
+    var islock = false
+</script>
+<script type="text/javascript" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/comment.js"></script>
+    <div id="ad_bot">
+    <iframe id="ad_frm_1" frameborder="0" scrolling="no" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/ad(2).htm" style="border-width: 0px; overflow: hidden; width: 738px; height: 0px;"></iframe></div>
+    <script type="text/javascript">
+    new Ad(5, 'ad_bot');
+    </script>
+<div id="report_dialog">
+</div>
+
+<div id="d-top" style="bottom:60px;">
+      
+
+       <a id="quick-reply" class="btn btn-top q-reply" title="快速回复" style="display:none;">
+            <img src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/blog-icon-reply.png" alt="快速回复">
+        </a>    
+
+    <a id="d-top-a" class="btn btn-top backtop" style="" title="返回顶部" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_huidaodingbu&#39;])">         
+         <img src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/top.png" alt="TOP">
+    </a>
+</div>
+<script type="text/javascript">
+    $(function ()
+    {
+        $("#ad_frm_0").height("90px");
+
+        if($("#comment_content").length>0)
+        {
+            $("#quick-reply").show();
+
+            $("#quick-reply").click(function(){
+                setEditorFocus();
+            });
+        }       
+     
+        var d_top = $('#d-top-a');
+        document.onscroll = function ()
+        {
+            var scrTop = (document.body.scrollTop || document.documentElement.scrollTop);
+            if (scrTop > 500)
+            {
+                d_top.show();
+            } else
+            {
+                d_top.hide();
+            }
+        }
+        $('#d-top-a').click(function ()
+        {
+            scrollTo(0, 0);
+            this.blur();
+            return false;
+        });
+    });
+  
+</script>
+<style type="text/css">
+    .tag_list
+    {
+        background: none repeat scroll 0 0 #FFFFFF;
+        border: 1px solid #D7CBC1;
+        color: #000000;
+        font-size: 12px;
+        line-height: 20px;
+        list-style: none outside none;
+        margin: 10px 2% 0 1%;
+        padding: 1px;
+    }
+    .tag_list h5
+    {
+        background: none repeat scroll 0 0 #E0DBD3;
+        color: #47381C;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 5px;
+        margin: 0;
+    }
+    .tag_list h5 a
+    {
+        color: #47381C;
+    }
+    .classify
+    {
+        margin: 10px 0;
+        padding: 4px 12px 8px;
+    }
+    .classify a
+    {
+        margin-right: 20px;
+        white-space: nowrap;
+    }
+</style>
+<div class="tag_list">
+    <h5>
+        <a href="http://www.csdn.net/tag/" target="_blank">核心技术类目</a></h5>
+    <div class="classify">
+<a title="全部主题" href="http://www.csdn.net/tag" target="_blank" onclick="LogClickCount(this,336);">全部主题</a>
+<a title="Hadoop" href="http://g.csdn.net/5272865" target="_blank" onclick="LogClickCount(this,336);">Hadoop</a>
+<a title="AWS" href="http://g.csdn.net/5272866" target="_blank" onclick="LogClickCount(this,336);">AWS</a>
+<a title="移动游戏" href="http://g.csdn.net/5272870" target="_blank" onclick="LogClickCount(this,336);">移动游戏</a>
+<a title="Java" href="http://g.csdn.net/5272871" target="_blank" onclick="LogClickCount(this,336);">Java</a>
+<a title="Android" href="http://g.csdn.net/5272872" target="_blank" onclick="LogClickCount(this,336);">Android</a>
+<a title="iOS" href="http://g.csdn.net/5272873" target="_blank" onclick="LogClickCount(this,336);">iOS</a>
+<a title="Swift" href="http://g.csdn.net/5272868" target="_blank" onclick="LogClickCount(this,336);">Swift</a>
+<a title="智能硬件" href="http://g.csdn.net/5272869" target="_blank" onclick="LogClickCount(this,336);">智能硬件</a>
+<a title="Docker" href="http://g.csdn.net/5272867" target="_blank" onclick="LogClickCount(this,336);">Docker</a>
+<a title="OpenStack" href="http://g.csdn.net/5272925" target="_blank" onclick="LogClickCount(this,336);">OpenStack</a>
+<a title="VPN" href="http://www.csdn.net/tag/vpn" target="_blank" onclick="LogClickCount(this,336);">VPN</a>
+<a title="Spark" href="http://g.csdn.net/5272924" target="_blank" onclick="LogClickCount(this,336);">Spark</a>
+<a title="ERP" href="http://www.csdn.net/tag/erp" target="_blank" onclick="LogClickCount(this,336);">ERP</a>
+<a title="IE10" href="http://www.csdn.net/tag/ie10" target="_blank" onclick="LogClickCount(this,336);">IE10</a>
+<a title="Eclipse" href="http://www.csdn.net/tag/eclipse" target="_blank" onclick="LogClickCount(this,336);">Eclipse</a>
+<a title="CRM" href="http://www.csdn.net/tag/crm" target="_blank" onclick="LogClickCount(this,336);">CRM</a>
+<a title="JavaScript" href="http://www.csdn.net/tag/javascript" target="_blank" onclick="LogClickCount(this,336);">JavaScript</a>
+<a title="数据库" href="http://www.csdn.net/tag/%E6%95%B0%E6%8D%AE%E5%BA%93" target="_blank" onclick="LogClickCount(this,336);">数据库</a>
+<a title="Ubuntu" href="http://www.csdn.net/tag/ubuntu" target="_blank" onclick="LogClickCount(this,336);">Ubuntu</a>
+<a title="NFC" href="http://www.csdn.net/tag/nfc" target="_blank" onclick="LogClickCount(this,336);">NFC</a>
+<a title="WAP" href="http://www.csdn.net/tag/wap" target="_blank" onclick="LogClickCount(this,336);">WAP</a>
+<a title="jQuery" href="http://www.csdn.net/tag/jquery" target="_blank" onclick="LogClickCount(this,336);">jQuery</a>
+<a title="BI" href="http://www.csdn.net/tag/bi" target="_blank" onclick="LogClickCount(this,336);">BI</a>
+<a title="HTML5" href="http://www.csdn.net/tag/html5" target="_blank" onclick="LogClickCount(this,336);">HTML5</a>
+<a title="Spring" href="http://www.csdn.net/tag/spring" target="_blank" onclick="LogClickCount(this,336);">Spring</a>
+<a title="Apache" href="http://www.csdn.net/tag/apache" target="_blank" onclick="LogClickCount(this,336);">Apache</a>
+<a title=".NET" href="http://www.csdn.net/tag/.net" target="_blank" onclick="LogClickCount(this,336);">.NET</a>
+<a title="API" href="http://www.csdn.net/tag/api" target="_blank" onclick="LogClickCount(this,336);">API</a>
+<a title="HTML" href="http://www.csdn.net/tag/html" target="_blank" onclick="LogClickCount(this,336);">HTML</a>
+<a title="SDK" href="http://www.csdn.net/tag/sdk" target="_blank" onclick="LogClickCount(this,336);">SDK</a>
+<a title="IIS" href="http://www.csdn.net/tag/iis" target="_blank" onclick="LogClickCount(this,336);">IIS</a>
+<a title="Fedora" href="http://www.csdn.net/tag/fedora" target="_blank" onclick="LogClickCount(this,336);">Fedora</a>
+<a title="XML" href="http://www.csdn.net/tag/xml" target="_blank" onclick="LogClickCount(this,336);">XML</a>
+<a title="LBS" href="http://www.csdn.net/tag/lbs" target="_blank" onclick="LogClickCount(this,336);">LBS</a>
+<a title="Unity" href="http://www.csdn.net/tag/unity" target="_blank" onclick="LogClickCount(this,336);">Unity</a>
+<a title="Splashtop" href="http://www.csdn.net/tag/splashtop" target="_blank" onclick="LogClickCount(this,336);">Splashtop</a>
+<a title="UML" href="http://www.csdn.net/tag/uml" target="_blank" onclick="LogClickCount(this,336);">UML</a>
+<a title="components" href="http://www.csdn.net/tag/components" target="_blank" onclick="LogClickCount(this,336);">components</a>
+<a title="Windows Mobile" href="http://www.csdn.net/tag/windowsmobile" target="_blank" onclick="LogClickCount(this,336);">Windows Mobile</a>
+<a title="Rails" href="http://www.csdn.net/tag/rails" target="_blank" onclick="LogClickCount(this,336);">Rails</a>
+<a title="QEMU" href="http://www.csdn.net/tag/qemu" target="_blank" onclick="LogClickCount(this,336);">QEMU</a>
+<a title="KDE" href="http://www.csdn.net/tag/kde" target="_blank" onclick="LogClickCount(this,336);">KDE</a>
+<a title="Cassandra" href="http://www.csdn.net/tag/cassandra" target="_blank" onclick="LogClickCount(this,336);">Cassandra</a>
+<a title="CloudStack" href="http://www.csdn.net/tag/cloudstack" target="_blank" onclick="LogClickCount(this,336);">CloudStack</a>
+<a title="FTC" href="http://www.csdn.net/tag/ftc" target="_blank" onclick="LogClickCount(this,336);">FTC</a>
+<a title="coremail" href="http://www.csdn.net/tag/coremail" target="_blank" onclick="LogClickCount(this,336);">coremail</a>
+<a title="OPhone " href="http://www.csdn.net/tag/ophone" target="_blank" onclick="LogClickCount(this,336);">OPhone </a>
+<a title="CouchBase" href="http://www.csdn.net/tag/couchbase" target="_blank" onclick="LogClickCount(this,336);">CouchBase</a>
+<a title="云计算" href="http://www.csdn.net/tag/%E4%BA%91%E8%AE%A1%E7%AE%97" target="_blank" onclick="LogClickCount(this,336);">云计算</a>
+<a title="iOS6" href="http://www.csdn.net/tag/iOS6" target="_blank" onclick="LogClickCount(this,336);">iOS6</a>
+<a title="Rackspace " href="http://www.csdn.net/tag/rackspace" target="_blank" onclick="LogClickCount(this,336);">Rackspace </a>
+<a title="Web App" href="http://www.csdn.net/tag/webapp" target="_blank" onclick="LogClickCount(this,336);">Web App</a>
+<a title="SpringSide" href="http://www.csdn.net/tag/springside" target="_blank" onclick="LogClickCount(this,336);">SpringSide</a>
+<a title="Maemo" href="http://www.csdn.net/tag/maemo" target="_blank" onclick="LogClickCount(this,336);">Maemo</a>
+<a title="Compuware" href="http://www.csdn.net/tag/compuware" target="_blank" onclick="LogClickCount(this,336);">Compuware</a>
+<a title="大数据" href="http://www.csdn.net/tag/%E5%A4%A7%E6%95%B0%E6%8D%AE" target="_blank" onclick="LogClickCount(this,336);">大数据</a>
+<a title="aptech" href="http://www.csdn.net/tag/aptech" target="_blank" onclick="LogClickCount(this,336);">aptech</a>
+<a title="Perl" href="http://www.csdn.net/tag/perl" target="_blank" onclick="LogClickCount(this,336);">Perl</a>
+<a title="Tornado" href="http://www.csdn.net/tag/tornado" target="_blank" onclick="LogClickCount(this,336);">Tornado</a>
+<a title="Ruby" href="http://www.csdn.net/tag/ruby" target="_blank" onclick="LogClickCount(this,336);">Ruby</a>
+<a title="Hibernate" href="http://www.csdn.net/hibernate" target="_blank" onclick="LogClickCount(this,336);">Hibernate</a>
+<a title="ThinkPHP" href="http://www.csdn.net/tag/thinkphp" target="_blank" onclick="LogClickCount(this,336);">ThinkPHP</a>
+<a title="HBase" href="http://www.csdn.net/tag/hbase" target="_blank" onclick="LogClickCount(this,336);">HBase</a>
+<a title="Pure" href="http://www.csdn.net/tag/pure" target="_blank" onclick="LogClickCount(this,336);">Pure</a>
+<a title="Solr" href="http://www.csdn.net/tag/solr" target="_blank" onclick="LogClickCount(this,336);">Solr</a>
+<a title="Angular" href="http://www.csdn.net/tag/angular" target="_blank" onclick="LogClickCount(this,336);">Angular</a>
+<a title="Cloud Foundry" href="http://www.csdn.net/tag/cloudfoundry" target="_blank" onclick="LogClickCount(this,336);">Cloud Foundry</a>
+<a title="Redis" href="http://www.csdn.net/tag/redis" target="_blank" onclick="LogClickCount(this,336);">Redis</a>
+<a title="Scala" href="http://www.csdn.net/tag/scala" target="_blank" onclick="LogClickCount(this,336);">Scala</a>
+<a title="Django" href="http://www.csdn.net/tag/django" target="_blank" onclick="LogClickCount(this,336);">Django</a>
+<a title="Bootstrap" href="http://www.csdn.net/tag/bootstrap" target="_blank" onclick="LogClickCount(this,336);">Bootstrap</a>
+    </div>
+</div>
+
+                        <div class="clear">
+                        </div>
+                    </div>                   
+                
+            </div>
+            <div id="side">
+    <div class="side">
+<div id="panel_Profile" class="panel">
+<ul class="panel_head"><span>个人资料</span></ul>
+<ul class="panel_body profile">
+<div id="blog_userface">
+    <a href="http://my.csdn.net/qwlovedzm" target="_blank">
+    <img src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/1_qwlovedzm.jpg" title="访问我的空间" style="max-width:90%">
+    </a>
+    <br>
+    <span><a href="http://my.csdn.net/qwlovedzm" class="user_name" target="_blank">lelele</a></span>
+</div>
+<div class="interact">
+<a href="javascript:void(0);" class="attent" id="span_add_follow" title="[加关注]" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_guanzhu&#39;])"></a>
+<a href="javascript:void(0);" class="letter" onclick="loginto(1)" title="[发私信]"></a>
+</div>
+<div id="blog_medal">
+<div id="bms_box"><a href="http://medal.blog.csdn.net/allmedal.aspx" target="_blank"><img src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/holdon_s2.gif" onmouseover="m_over_m(this,0)" onmouseout="m_out_m()" alt=""></a></div></div>
+<ul id="blog_rank">
+    <li>访问：<span>392765次</span></li>
+    <li>积分：<span>5506分</span></li>
+    <li>排名：<span>第1223名</span></li>
+</ul>
+<ul id="blog_statistics">
+    <li>原创：<span>122篇</span></li>
+    <li>转载：<span>209篇</span></li>
+    <li>译文：<span>0篇</span></li>
+    <li>评论：<span>130条</span></li>
+</ul>
+</ul>
+</div>
+
+
+<div class="panel" id="panel_Search">
+    <ul class="panel_head"><span>文章搜索</span></ul>
+    <ul class="panel_body">
+        <form id="frmSearch" action="http://so.csdn.net/search" class="form_search" target="_blank">
+        <span><input id="inputSearch" type="text" class="blogsearch" title="请输入关键字"></span>
+        <input id="btnSubmit" type="button" value="搜索" title="search in blog">
+        <input type="hidden" name="q" id="inputQ">
+        <input type="hidden" name="t" value="blog">
+        <a id="btnSearchBlog" target="_blank"></a>
+        </form>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btnSubmit").click(function () {           
+            search();
+        });
+
+        $("#frmSearch").submit(function () {
+            search();
+            return false;
+        });
+
+        function search()
+        {
+            var url = "http://so.csdn.net/so/search/s.do?q=" + encodeURIComponent($("#inputSearch").val()) + "&u=" + username + "&t=blog";
+            window.location.href = url;
+        }   
+    });
+</script><div id="panel_Category" class="panel">
+<ul class="panel_head"><span>文章分类</span></ul>
+<ul class="panel_body">
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/858155" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">Android+Arduino开发专题</a><span>(13)</span>
+            </li>
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/612784" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">ArcGIS专题</a><span>(32)</span>
+            </li>
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/807803" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">ASP.NET MVC</a><span>(9)</span>
+            </li>
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/616891" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">VRML专题</a><span>(1)</span>
+            </li>
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/571161" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">军事文摘</a><span>(8)</span>
+            </li>
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/263992" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">感悟人生</a><span>(27)</span>
+            </li>
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/263998" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">成功经验</a><span>(51)</span>
+            </li>
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/263996" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">技术心得(C#与JAVA)</a><span>(153)</span>
+            </li>
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/844806" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">数据库专题</a><span>(17)</span>
+            </li>
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/852738" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">.Net第三方控件</a><span>(8)</span>
+            </li>
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/853385" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">ASP.NET AJAX</a><span>(7)</span>
+            </li>
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/1062812" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">WF与WCF专题</a><span>(1)</span>
+            </li>
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/1217997" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">设计模式</a><span>(4)</span>
+            </li>
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/1518951" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">Php、MySQL、C++等</a><span>(6)</span>
+            </li>
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/263994" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">生活日记</a><span>(29)</span>
+            </li>
+             <li>
+                <a href="http://blog.csdn.net/qwlovedzm/article/category/813425" onclick="_gaq.push([&#39;_trackEvent&#39;,&#39;function&#39;, &#39;onclick&#39;, &#39;blog_articles_wenzhangfenlei&#39;]); ">日志记录</a><span>(2)</span>
+            </li>
+</ul>
+</div><div id="panel_Archive" class="panel">
+<ul class="panel_head"><span>文章存档</span></ul>
+<ul class="panel_body">
+<div id="archive_list"><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2014/06">2014年06月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2014/05">2014年05月</a><span>(5)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2014/04">2014年04月</a><span>(2)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2014/02">2014年02月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2014/01">2014年01月</a><span>(2)</span></li><span class="hidelist" style="display:none;"><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2013/12">2013年12月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2013/09">2013年09月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2013/07">2013年07月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2013/06">2013年06月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2013/05">2013年05月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2013/03">2013年03月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2013/02">2013年02月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2013/01">2013年01月</a><span>(18)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2012/12">2012年12月</a><span>(2)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2012/11">2012年11月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2012/10">2012年10月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2012/09">2012年09月</a><span>(2)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2012/08">2012年08月</a><span>(7)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2012/07">2012年07月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2012/06">2012年06月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2012/05">2012年05月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2012/03">2012年03月</a><span>(2)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2012/02">2012年02月</a><span>(17)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2012/01">2012年01月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2011/12">2011年12月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2011/11">2011年11月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2011/10">2011年10月</a><span>(2)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2011/09">2011年09月</a><span>(6)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2011/08">2011年08月</a><span>(16)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2011/07">2011年07月</a><span>(15)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2011/06">2011年06月</a><span>(6)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2011/05">2011年05月</a><span>(8)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2011/04">2011年04月</a><span>(14)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2011/03">2011年03月</a><span>(6)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2011/02">2011年02月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2011/01">2011年01月</a><span>(9)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2010/12">2010年12月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2010/11">2010年11月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2010/10">2010年10月</a><span>(8)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2010/09">2010年09月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2010/08">2010年08月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2010/07">2010年07月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2010/06">2010年06月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2010/05">2010年05月</a><span>(6)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2010/04">2010年04月</a><span>(7)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2010/03">2010年03月</a><span>(7)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2010/02">2010年02月</a><span>(8)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2010/01">2010年01月</a><span>(9)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2009/12">2009年12月</a><span>(5)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2009/11">2009年11月</a><span>(12)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2009/10">2009年10月</a><span>(12)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2009/09">2009年09月</a><span>(2)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2009/08">2009年08月</a><span>(7)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2009/07">2009年07月</a><span>(2)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2009/06">2009年06月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2009/05">2009年05月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2009/04">2009年04月</a><span>(4)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2009/03">2009年03月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2009/02">2009年02月</a><span>(10)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2009/01">2009年01月</a><span>(5)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2008/11">2008年11月</a><span>(1)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2007/02">2007年02月</a><span>(6)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2007/01">2007年01月</a><span>(3)</span></li><li><a href="http://blog.csdn.net/qwlovedzm/article/month/2006/12">2006年12月</a><span>(3)</span></li></span><div id="archive_list_button" class="list_closed">展开</div></div>
+</ul>
+</div>
+<div id="hotarticls" class="panel">
+<ul class="panel_head">
+    <span>       
+阅读排行    </span>
+</ul>
+
+<ul class="panel_body itemlist">
+<li>
+<a href="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET.htm" title="EasyUI 验证框使用方法">EasyUI 验证框使用方法</a><span>(15976)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6313487" title="ASP.NET MVC3 快速入门-第一节 概述">ASP.NET MVC3 快速入门-第一节 概述</a><span>(11152)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/5482272" title="Silverlight连接WCF--错误&quot;远程服务器返回了错误NotFound”">Silverlight连接WCF--错误"远程服务器返回了错误NotFound”</a><span>(8782)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6313670" title="ASP.NET MVC3 快速入门-第三节 添加一个视图">ASP.NET MVC3 快速入门-第三节 添加一个视图</a><span>(7553)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6313676" title="ASP.NET MVC3 快速入门-第四节 添加一个模型">ASP.NET MVC3 快速入门-第四节 添加一个模型</a><span>(7198)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/4378244" title="细品我军054A型导弹护卫舰">细品我军054A型导弹护卫舰</a><span>(6311)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/1504818" title="FPGA 简介">FPGA 简介</a><span>(6190)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6313665" title="ASP.NET MVC3 快速入门--第二节 添加一个控制器">ASP.NET MVC3 快速入门--第二节 添加一个控制器</a><span>(6036)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/3683995" title="Eclipse + CDT + MinGW 安装配置说明-(C开发) ">Eclipse + CDT + MinGW 安装配置说明-(C开发) </a><span>(5934)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/4703947" title="oracle 创建同义词">oracle 创建同义词</a><span>(5844)</span>
+</li>
+</ul>
+</div>
+<div id="hotarticls2" class="panel">
+<ul class="panel_head"><span>评论排行</span></ul>
+<ul class="panel_body itemlist">
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6313692" title="ASP.NET MVC3 快速入门-第七节 在Movie(电影)模型与数据表中添加一个字段">ASP.NET MVC3 快速入门-第七节 在Movie(电影)模型与数据表中添加一个字段</a><span>(10)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6313665" title="ASP.NET MVC3 快速入门--第二节 添加一个控制器">ASP.NET MVC3 快速入门--第二节 添加一个控制器</a><span>(8)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/5271429" title="ArcGIS 9.3 破解后 ArcGlobe、ArcScene不能用(Generating ArcID Module)的解决办法">ArcGIS 9.3 破解后 ArcGlobe、ArcScene不能用(Generating ArcID Module)的解决办法</a><span>(7)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6313732" title="ASP.NET MVC3 快速入门-第九节 实现编辑、删除与明细信息视图">ASP.NET MVC3 快速入门-第九节 实现编辑、删除与明细信息视图</a><span>(6)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/5482272" title="Silverlight连接WCF--错误&quot;远程服务器返回了错误NotFound”">Silverlight连接WCF--错误"远程服务器返回了错误NotFound”</a><span>(6)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6313680" title="ASP.NET MVC3 快速入门-第五节 从控制器访问模型中的数据">ASP.NET MVC3 快速入门-第五节 从控制器访问模型中的数据</a><span>(6)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6313487" title="ASP.NET MVC3 快速入门-第一节 概述">ASP.NET MVC3 快速入门-第一节 概述</a><span>(5)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6313684" title="ASP.NET MVC3 快速入门-第六节 增加一个追加数据的方法和一个追加数据的视图">ASP.NET MVC3 快速入门-第六节 增加一个追加数据的方法和一个追加数据的视图</a><span>(4)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/5537304" title="ArcGIS Engine中的License设置">ArcGIS Engine中的License设置</a><span>(4)</span>
+</li>
+<li>
+<a href="http://blog.csdn.net/qwlovedzm/article/details/6313676" title="ASP.NET MVC3 快速入门-第四节 添加一个模型">ASP.NET MVC3 快速入门-第四节 添加一个模型</a><span>(4)</span>
+</li>
+</ul>
+</div>
+<div id="homepageArticles" class="panel tracking-ad" data-mod="popu_4">
+<ul class="panel_head"><span>推荐文章</span></ul>
+<ul class="panel_body" id="ad_commend"><iframe id="ad_frm_2" frameborder="0" scrolling="no" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/ad.htm" style="border-width: 0px; overflow: hidden; width: 194px; height: 0px;"></iframe></ul>
+</div>
+<script type="text/javascript">
+ new Ad(12, 'ad_commend');
+</script><div id="newcomments" class="panel">
+<ul class="panel_head"><span>最新评论</span></ul>
+<ul class="panel_body itemlist">
+    <li>
+   
+         <a href="http://blog.csdn.net/qwlovedzm/article/details/6695171#comments">linq to sql 插入值后，如何取回自增的ID</a>
+    <p style="margin:0px;"><a href="http://blog.csdn.net/a503200877" class="user_name">CHINGHE</a>:
+LZ你的方法有点麻烦，你了解一下linq的操作看看，他其实是保存在内存中的，比如：var a=db....
+    </p>
+    </li>
+    <li>
+   
+         <a href="http://blog.csdn.net/qwlovedzm/article/details/6292147#comments">将字符串或表达式直接转为C#可执行代码的办法</a>
+    <p style="margin:0px;"><a href="http://blog.csdn.net/lightxun" class="user_name">lightxun</a>:
+点赞。十分感谢分享。
+    </p>
+    </li>
+    <li>
+   
+         <a href="http://blog.csdn.net/qwlovedzm/article/details/3854669#comments">windows服务安装时，出错：System.ComponentModel.Win32Exception: 帐户名无效或不存在,或者密码对于指定</a>
+    <p style="margin:0px;"><a href="http://blog.csdn.net/hhcxybaow" class="user_name">hhcxybaow</a>:
+给力，谢谢！
+    </p>
+    </li>
+    <li>
+   
+         <a href="http://blog.csdn.net/qwlovedzm/article/details/9053093#comments">再谈一下Android下SOCKET通讯的编码问题</a>
+    <p style="margin:0px;"><a href="http://blog.csdn.net/eabit" class="user_name">eabit</a>:
+是的，我也遇到同样问题，已经解决，谢谢
+    </p>
+    </li>
+    <li>
+   
+         <a href="http://blog.csdn.net/qwlovedzm/article/details/6676525#comments">EasyUI 验证框使用方法</a>
+    <p style="margin:0px;"><a href="http://blog.csdn.net/yaerfeng" class="user_name">yaerfeng</a>:
+easyui代码下载：http://www.zuidaima.com/share/search.ht...
+    </p>
+    </li>
+    <li>
+   
+         <a href="http://blog.csdn.net/qwlovedzm/article/details/8212519#comments">VS2010 连接 Access mdb文件时遇到的问题</a>
+    <p style="margin:0px;"><a href="http://blog.csdn.net/nplxxx" class="user_name">nplxxx</a>:
+这个才是正解   问题是我的没崩溃，三个小时啊。。。
+    </p>
+    </li>
+    <li>
+   
+         <a href="http://blog.csdn.net/qwlovedzm/article/details/6206742#comments">Ajax程序在VS2008下运行正常，但在服务器IIS6下不正常原因分析</a>
+    <p style="margin:0px;"><a href="http://blog.csdn.net/sunfan369378633" class="user_name">sunfan369378633</a>:
+我的按照这个设置怎么还不行啊？可否指点一二。
+    </p>
+    </li>
+    <li>
+   
+         <a href="http://blog.csdn.net/qwlovedzm/article/details/7885480#comments">Android客户端解密与C#服务端加密实现方法</a>
+    <p style="margin:0px;"><a href="http://blog.csdn.net/luodan350" class="user_name">luodan350</a>:
+为什么我加密出来的东西跟服务端解密的永远不一致。服务端是C#写的解密程序。参考了大量网上说的那些方式...
+    </p>
+    </li>
+    <li>
+   
+         <a href="http://blog.csdn.net/qwlovedzm/article/details/8522121#comments">NHibernate第一个实例(基于NHibernate-3.3.2)</a>
+    <p style="margin:0px;"><a href="http://blog.csdn.net/znufe07090402" class="user_name">znufe07090402</a>:
+这个框架不是太熟  我之前用Mybatis
+    </p>
+    </li>
+    <li>
+   
+         <a href="http://blog.csdn.net/qwlovedzm/article/details/5271429#comments">ArcGIS 9.3 破解后 ArcGlobe、ArcScene不能用(Generating ArcID Module)的解决办法</a>
+    <p style="margin:0px;"><a href="http://blog.csdn.net/u012851721" class="user_name">大师117</a>:
+@qwlovedzm:装完以后真没发现TIN9.lic这个文件，找了好久都没有找到了
+    </p>
+    </li>
+</ul>
+</div>
+    </div>
+    <div class="clear">
+    </div>
+</div>
+
+            <div class="clear">
+            </div>
+        </div>
+        
+
+<script type="text/javascript" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/cnick.js"></script>
+<script type="text/javascript" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/newblog.min.js"></script>
+
+
+<script type="text/javascript" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/showblogmedal.ashx"></script>
+<script type="text/javascript">
+    document.write('<script type="text/javascript" src="http://csdnimg.cn/pubfooter/js/publib_footer.js?' + Math.floor(new Date() / 120000).toString(36) + '="></' + 'script>');
+</script><script type="text/javascript" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/publib_footer.js"></script><link rel="stylesheet" type="text/css" href="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/pub_footer_2012.css"><div id="pub_footerall" class="pub_footerall"><dl><dt></dt> <dd><a href="http://www.csdn.net/company/about.html" target="_blank">公司简介</a>|<a href="http://www.csdn.net/company/recruit.html" target="_blank">招贤纳士</a>|<a href="http://www.csdn.net/company/marketing.html" target="_blank">广告服务</a>|<a href="http://www.csdn.net/company/account.html" target="_blank">银行汇款帐号</a>|<a href="http://www.csdn.net/company/contact.html" target="_blank">联系方式</a>|<a href="http://www.csdn.net/company/statement.html" target="_blank">版权声明</a>|<a href="http://www.csdn.net/company/layer.html" target="_blank">法律顾问</a>|<a href="mailto:webmaster@csdn.net">问题报告</a>|<a target="_blank" href="http://www.csdn.net/friendlink.html">合作伙伴</a>|<a href="http://bbs.csdn.net/forums/Service" target="_blank">论坛反馈</a></dd><dd><a href="http://wpa.qq.com/msgrd?v=3&uin=2355263776&site=qq&menu=yes" target="_blank" class="qq">网站客服</a> <a href="http://wpa.qq.com/msgrd?v=3&uin=2251809102&site=qq&menu=yes" target="_blank" class="qq">杂志客服</a> <a href="http://e.weibo.com/csdnsupport/profile" target="_blank" class="weibo">微博客服</a> <a href="mailto:webmaster@csdn.net" class="email" title="联系邮箱">webmaster@csdn.net</a> <span class="phone" title="服务热线">400-600-2320</span></dd><dd>京&nbsp;ICP&nbsp;证&nbsp;070598&nbsp;号</dd><dd>北京创新乐知信息技术有限公司 版权所有</dd><dd>江苏乐知网络技术有限公司 提供商务支持</dd><dd>Copyright © 1999-2014, CSDN.NET, All Rights Reserved&nbsp;<a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001032100010" target="_blank"><img src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/gongshang_logos.gif" alt="GongshangLogo" title=""></a></dd></dl></div><div id="note1" class="csdn_note" style="display:none; position:absolute; z-index:9999; width:440px">  <span class="notice_top_arrow"><span class="inner"></span></span>  <div class="box"></div></div><div class="csdn_notice_tip" style="display: none; position: absolute; z-index: 9990; width: 170px;">  <iframe src="about:blank" frameborder="0" scrolling="no" style="z-index:-1;position:absolute;top:0;left:0;width:100%;height:100%;background:transparent"></iframe>  <div class="tip_text">您有<strong>0</strong>条新通知</div>  <a href="javascript:void 0" class="close2"></a></div><script id="noticeScript" type="text/javascript" btnid="header_notice_num" wrapid="note1" count="5" subcount="5" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/notify.js"></script>
+    <script type="text/javascript" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/login.js"></script>
+<script type="text/javascript">document.write("<img src=http://counter.csdn.net/pv.aspx?id=24 border=0 width=0 height=0>");</script><img src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/pv.aspx" border="0" width="0" height="0">
+<script type="text/javascript" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/counter.js"></script><script type="text/javascript" charset="UTF-8" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/msg.popup.js"></script>
+<script type="text/javascript" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/ad-blog.js"></script><script type="text/javascript" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/ad-ms938.js"></script>
+
+<script type="text/javascript" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/count.js"></script><iframe src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/logs.htm" frameborder="0" width="0" height="0"></iframe>
+<script type="text/javascript">
+    $(function () {
+        function __get_code_toolbar(snippet_id) {
+            return $("<a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "' target='_blank' title='在CODE上查看代码片' style='text-indent:0;'><img src='https://code.csdn.net/assets/CODE_ico.png' width=12 height=12 alt='在CODE上查看代码片' style='position:relative;top:1px;left:2px;'/></a>"
+                    + "<a href='https://code.csdn.net/snippets/"
+                    + snippet_id
+                    + "/fork' target='_blank' title='派生到我的代码片'  style='text-indent:0;'><img src='https://code.csdn.net/assets/ico_fork.svg' width=12 height=12 alt='派生到我的代码片' style='position:relative;top:2px;left:2px;'/></a>");
+        }
+        
+        $("[code_snippet_id]").each(function () {
+            __s_id = $(this).attr("code_snippet_id");
+            if (__s_id != null && __s_id != "" && __s_id != 0 && parseInt(__s_id) > 70020) {
+                __code_tool = __get_code_toolbar(__s_id);
+                $(this).prev().find(".tools").append(__code_tool);
+            }
+        });
+    });
+</script>
+
+    </div>
+      <!--new top-->
+    
+    <script id="csdn-toolbar-id" btnid="header_notice_num" wrapid="note1" count="5" subcount="5" type="text/javascript" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/toolbar.js"></script>
+     <!--new top-->
+
+
+<div id="tag-suggest-pop" style="display: block;">
+  <div class="relative">
+    <div class="close"></div>
+    <div class="content"><div><span>更多相关资源：</span><a href="http://www.csdn.net/tag/js" title="关于 js 的主题" target="_blank">js</a></div></div>
+  </div>
+</div><link href="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/message_pop.css" rel="stylesheet" type="text/css"><div id="_popup_msg_container" style="display: block;">
+
+<div wistate="max" id="im_popupWindow_miniMsg" class="im_popupWindow" style="display: block; height: 250px;">
+	<h6 class="wi_draggable"><span>
+</span><a onclick="_message_tips_pop(&#39;down&#39;);return false;"><img alt="close" class="founctionpic3" src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/pic_close.gif"></a></h6>
+    <div id="im_popupWindow_miniMsgContent" class="wi_content">
+		<div class="kuai">
+			<div style="width:280px;"><a href="http://bss.csdn.net/m/zone/csdn_ems" target="_blank"><img src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/0813-im.jpg" alt="" border="0" style="border:0;" title=""></a></div>
+		</div>
+	</div>
+<div class="content_qq"><span onclick="window.open(&#39;&#39;)" target="_blank"><font color="red">
+</font></span>
+ </div>
+ 
+ 
+</div>
+</div><img src="./EasyUI 验证框使用方法 - 乔峰的专栏 - 博客频道 - CSDN.NET_files/count_new.php" style="display: none;"></body></html>

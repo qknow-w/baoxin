@@ -1,0 +1,4 @@
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin\BaoXin.Utility\bin\Debug\BaoXin.Utility.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin\BaoXin.Utility\bin\Debug\BaoXin.Utility.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin\BaoXin.Utility\obj\Debug\BaoXin.Utility.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin\BaoXin.Utility\obj\Debug\BaoXin.Utility.pdb

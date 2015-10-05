@@ -1,0 +1,11 @@
+G:\项目\爆信\BaoXin3\BaoXin.DAL\bin\Release\BaoXin.DAL.dll
+G:\项目\爆信\BaoXin3\BaoXin.DAL\bin\Release\BaoXin.DAL.pdb
+G:\项目\爆信\BaoXin3\BaoXin.DAL\bin\Release\BaoXin.Entity.dll
+G:\项目\爆信\BaoXin3\BaoXin.DAL\bin\Release\BaoXin.SqlHelper.dll
+G:\项目\爆信\BaoXin3\BaoXin.DAL\bin\Release\EntityFramework.dll
+G:\项目\爆信\BaoXin3\BaoXin.DAL\bin\Release\BaoXin.Entity.pdb
+G:\项目\爆信\BaoXin3\BaoXin.DAL\bin\Release\EntityFramework.xml
+G:\项目\爆信\BaoXin3\BaoXin.DAL\bin\Release\zh-Hans\EntityFramework.resources.dll
+G:\项目\爆信\BaoXin3\BaoXin.DAL\obj\Release\BaoXin.DAL.csprojResolveAssemblyReference.cache
+G:\项目\爆信\BaoXin3\BaoXin.DAL\obj\Release\BaoXin.DAL.dll
+G:\项目\爆信\BaoXin3\BaoXin.DAL\obj\Release\BaoXin.DAL.pdb

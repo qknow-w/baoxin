@@ -1,0 +1,19 @@
+*{margin: 0px;padding: 0px;}
+body{background: url("../../images/login/bg.jpg");}
+.boxLogin{position: relative; width: 502px;height: 274px;margin: 0 auto;background: url("../../images/login/bg2.png");margin-top: 167px;}
+.s1, .s2, .s3, .s4, .s5, .s6, .s7,.s8{position: absolute;}
+.s1{left: 177px;top: 95px;width: 60px;}
+.s2{left: 235px;top: 91px;}
+.s3{left: 177px;top: 130px;width: 60px;}
+.s4{left: 235px;top: 126px;}
+.s5{left: 177px;top: 165px;width: 60px;}
+.s6{left: 235px;top: 161px;}
+.s6 input{width: 70px;ime-mode: disabled;}
+.s6 img{width: 70px;height: 22px;margin-top: 0px;vertical-align: top;cursor: pointer;}
+.s8{left: 40%;top: 205px;cursor: pointer;}
+.errorMsg{color: red;font-size: 10pt}
+.errorMsg1{color: red;font-size: 10pt}
+.sign{ width: 130px;height: 40px;border-style: none;background: ;background: url("../../images/login/137.png");cursor: pointer;}
+.load{position: absolute;z-index: 3000;left: 60.5%;top: 218px;display: none;}
+.sign:hover{background-position: 0 -40px;}
+.copyright{font-size: 14px;color: white;text-align: center;font-family: arial;height: 60px;line-height: 60px;}

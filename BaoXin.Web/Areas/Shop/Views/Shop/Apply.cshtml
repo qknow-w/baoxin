@@ -1,0 +1,175 @@
+﻿@using System.Web.UI.WebControls
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/shop/css/style.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery.js"></script>
+    <title>申请开店</title>
+</head>
+<style type="text/css">
+        body{ font-size:18px; font-weight:bold; font-family:"微软雅黑", "特粗黑体", "黑体";}
+        .zhifu{ background: url(@Url.Content("~/content/Shop/images/dengl.png")) no-repeat; height:50px; width:138px; font-size:18px; text-align:center; line-height:50px; color:#FFFFFF;}
+        .quxiao{background: url(@Url.Content("~/content/Shop/images/quxiao.png")) no-repeat;   height:50px; width:145px; font-size:18px; text-align:center; line-height:50px; color:#FFFFFF;}
+        .zq a{ color:#FFFFFF; text-decoration:none;}
+    </style>
+<body>
+    <form id="ff" method="POST"  enctype="multipart/form-data" action="/shop/shop/doapply">
+        <div id="big1" style="width: 950px">
+            <table width="697" height="1143" border="0" align="center">
+                <tr>
+                    <td colspan="2" style="color: #f9b125; font-weight: 800; font-family: '微软雅黑'; font-size: 30px;">
+                        <div align="center">申请开店</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="138">
+                        <div align="right">店名：</div>
+                    </td>
+                    <td width="400">
+                        <input required="required" type="text" name="StoreName" style=" background:@Url.Content("~/Content/shop/images/input_bj.png") no-repeat; line-height:32px; height:32px; width:400px; border:0; padding:2px 6px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div align="right">店面照片：</div>
+                    </td>
+                    <td>
+                        <input name="PhontName" required="required" style="background: @Url.Content("~/Content/shop/images/input_bj.png") no-repeat; height:32px; width:400px;line-height:32px;" type="file"   />
+                    @*  <img src= @Url.Content("~/Areas/Shop/Content/images/shangchuan.png") />    </td>*@
+                </tr>
+                <tr>
+                    <td>
+                        <div align="right">姓名：</div>
+                    </td>
+                    <td>
+                        <input type="text" required="required" name="PeopleName" style="background: @Url.Content("~/Content/shop/images/input_bj.png") no-repeat; line-height:32px; height:32px; width:400px; border:0; padding:2px 6px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div align="right">地址：</div>
+                    </td>
+                    <td>
+                        <input type="text" required="required" name="PeopleAdd" style="background: @Url.Content("~/Content/shop/images/input_bj.png") no-repeat; line-height:32px; height:32px; width:400px; border:0; padding:2px 6px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div align="right">邮箱：</div>
+                    </td>
+                    <td>
+                        <input type="text" required="required" name="PeopleEmail" style="background:@Url.Content("~/Content/shop/images/input_bj.png") no-repeat; line-height:32px; height:32px; width:400px; border:0; padding:2px 6px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div align="right">电话：</div>
+                    </td>
+                    <td>
+                        <input type="text" required="required"  name="PeoplePhone" style="background:@Url.Content("~/Content/shop/images/input_bj.png") no-repeat; line-height:32px; height:32px; width:400px; border:0; padding:2px 6px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div align="right">支付宝账号：</div>
+                    </td>
+                    <td>
+                        <input type="text" required="required" name="PeoplePay" style="background:@Url.Content("~/Content/shop/images/input_bj.png") no-repeat; line-height:32px; height:32px; width:400px; border:0; padding:2px 6px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div align="right">营业执照编号：</div>
+                    </td>
+                    <td>
+                        <input type="text" required="required" name="LicenseNumber" style="background:@Url.Content("~/Content/shop/images/input_bj.png") no-repeat;  height:32px; width:400px; border:0; padding:2px 6px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td height="89">
+                        <div align="right">开店协议： </div>
+                    </td>
+                    <td style="background-color: #ffffff">
+                    <p>一、开店者负责商品的质量，负责将商品运送到购 &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;买者手中</p>
+                    <p>二、武汉爆信网络科技有限公司将收取网上交易额 &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;的5%作为服务费</p>
+                    <p>三、服务费一周一结，每个星期日为结算日</p>
+                     <p>四、若开店者违反上述三项协议，武汉爆信网络科 &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;技有限公司将关闭其网上店面</p>   
+                       @* <img src=@Url.Content("~/Content/Shop/images/xieyi.png") /></td>*@
+                </tr>
+                <tr>
+                    <td height="96" colspan="2">
+                        <form id="form1" name="form1" method="post" action="">
+                            <label>
+                                <div align="center">
+                                    <input id="ch" type="checkbox" name="checkbox" value="checkbox" />我已阅读并同意相关服务条款和隐私政策       
+                                </div>
+                            </label>
+                        </form>
+                    </td>
+                </tr>
+                <tr class="zq">
+                    <td height="56">
+                        <div align="center" class="zhifu">
+                            <div align="center" id="apply"><a href="#">申请</a> </div>
+                        </div>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td width="145" colspan="3">
+                        <div align="center" class="quxiao">
+                            <div align="center"><a href="/index">取消</a></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+<script type="text/javascript">
+    $(function () {
+        $("#apply").click(function () {
+            var re = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.(?:com|cn)$/;
+            var emal = $("input[type=text][name=PeopleEmail]").val();
+            console.log(re.test(emal));
+            if (re.test(emal)==false) {
+                alert("请输入正确的邮箱");
+                return false;
+            }
+
+            // alert("请完整填写各项内容，否则不能正常注册店铺");
+            if ($("input[type=text][name=StoreName]").val() == "" || $("input[type=text][name=PeopleName]").val() == "" || $("input[type=file][name=PhontName]").val() == "" ||
+                $("input[type=text][name=PeopleAdd]").val() == "" || $("input[type=text][name=PeopleEmail]").val() == "" || $("input[type=text][name=PeoplePhone]").val() == "" ||
+                $("input[type=text][name=PeoplePay]").val() == "" || $("input[type=text][name=LicenseNumber]").val() == "") {
+                alert("请完整填写各项内容，否则不能正常注册店铺");
+                return false;
+            }
+
+           // location.href = "index";
+            if ($("#ch").is(":checked")) {
+                 $("#ff").submit();
+                //$.ajax({
+                //    url: "/shop/shop/doapply",
+                //    type: "post",
+                //    data: $('#ff').serialize(),
+                //    success: function (resulst) {
+                //      //  alert(resulst);
+
+
+                //    }
+                //});
+            } else {
+                alert("请同意相关服务条款和隐私政策 ");
+                return false;
+            }
+
+
+        });
+    })
+
+</script>
+</html>

@@ -1,0 +1,62 @@
+/* CSS Document */
+body{ margin:0; padding:0; border:0;}
+.clear{ clear:both;}
+#big{ width:1250px; height:auto; margin: 0 auto; background:#f2f2f2;}
+#big1{ height:auto; background:url(../images/dingdan_bj.jpg) repeat-x; width:70%; margin:0 auto;}
+
+/*公共页头*/
+.top{ width:100%; background:url(../images/top_bj.jpg) repeat-x; height:97px;}
+.top .logo{ height:68px; width:227px; float:left; margin-top:10px; padding-left:50px;}
+.top .diqu{ height:34px; width:650px; float:left; margin-left:50px; margin-top:30px;}
+.top .diqu img{ height:34px; width:78px;}
+.top .diqu span select{ height:34px; width:150px; font-size:12px; font-weight:200; position:relative; top:-9px;}
+.top .diqu span.sousuo input{width:200px; height:32px; background:url(../images/top_sousuo.png) no-repeat right; background-color:#FFFFFF; font-size:18px; text-align:right; padding-right:50px; border:1px solid #e1e1e1; line-height:34px;  position:relative; top:-9px;}
+.top .dc{ width:190px; height:auto; float:right; position:relative; top:-65px; margin-right:10px;}
+.top .dc ul li{  width:70px; height:34px; list-style:none; float:left; text-align:center;}
+.top .dc ul li a{ text-decoration:none; line-height:34px; color:#FFFFFF; font-size:14px; font-weight:bold;}
+
+/*公共导航nav*/
+.center{width: 1250px;  height:auto; margin:0;}
+.center .nav{ width:100%; background:#fcd984; height:38px;}
+.center .nav ul{ width:90%; height:auto; margin:0 auto;}
+.center .nav ul li{ list-style:none; float:left; background:#f99d1b; height:32px; width:138px; text-align:center; margin-left:20px; margin-right:20px;}
+.center .nav ul li a{ line-height:32px; font-size:12px; font-weight:bold; color:#FFFFFF; text-decoration:none;}
+
+/*首页中间展示nav*/
+.center .zhanshi{ margin:0 auto; width:100%;}
+.center .zhanshi ul li{ list-style:none; float:left; margin-left:18px; margin-top:18px;width: 240px;height: 150px;}
+
+.center .navwddp{ width:100%; background:#fcd984; height:32px;}
+.center .navwddp ul{ height:auto; margin:0 auto;}
+.center .navwddp ul li{ list-style:none; background:url(../images/wddp_shang.png) no-repeat; height:32px; width:138px; text-align:center; margin:0 auto;}
+.center .navwddp ul li a{ line-height:32px; font-size:12px; font-weight:bold; color:#FFFFFF;  text-decoration:none;}
+.center .dpzs{ width:100%; height:auto; margin:0 auto;}
+.center .dpzs ul li{ list-style:none; float:left;  margin-left:15px; margin-top:10px; height:151px; width:260px; text-align:center; line-height:151px;}
+.center .dpzs ul li a{ color:#fff; text-decoration:none; font-size:12px;}
+.center .dpzs ul li.dpzsone{ background:#f9a645;}
+.center .dpzs ul li.dpzstwo{ background:#f0593f;}
+.center .dpzs ul li.dpzsstr{ background:#f9a645;}
+
+/*摆放完成后的页面*/
+.center .wodpzs{ width:100%; height:auto; margin:0 auto;}
+.center .wodpzs ul li{ list-style:none; float:left;  margin-left:15px; margin-top:10px; height:250px; width:365px; text-align:center;}
+.center .wodpzs ul li a{ color:#fff; font-size:16px; font-weight:bold; text-decoration:none;}
+.center .wodpzs ul li a span{ display:block; height:20px;  line-height:50px; color:#000000; font-family:"微软雅黑", "特粗黑体", "黑体"; font-size:12px;}
+.center .wodpzs ul li a img{ height:119px; width:180px; margin-top:15px;}
+.center .wodpzs ul li.dpzsone{ background:#f9a645; height:201px; width:260px;}
+.center .wodpzs ul li.dpzstwo{ background:#f0593f; height:201px; width:260px;}
+.center .wodpzs ul li.dpzsstr{ background:#f9a645; height:201px; width:260px;}
+
+/*店铺选择页面*/
+.center .wodpzs1{ width:100%; height:auto; margin:0 auto;}
+.center .wodpzs1 ul li{ list-style:none; float:left;  margin-left:18px; margin-top:18px; height:151px; width:260px; text-align:center;}
+.center .wodpzs1 ul li a{ color:#fff; font-size:12px; font-weight:bold; text-decoration:none;}
+.center .wodpzs1 ul li a span{ display:block; height:30px;  line-height:30px; color:#fff; font-family:"微软雅黑", "特粗黑体", "黑体"; font-size:12px;}
+.center .wodpzs1 ul li a img{ height:119px; width:180px; margin-top:15px; border:8px solid #ccc; border-radius:5px;}
+.center .wodpzs1 ul li.dpzsone{ background:#f9a645; height:181px; width:260px;}
+.center .wodpzs1 ul li.dpzstwo{ background:#f0593f; height:181px; width:260px;}
+.center .wodpzs1 ul li.dpzsstr{ background:#f9a645; height:181px; width:260px;}
+
+.footer{ background:#f99d1b; height:85px; width:100%; margin-top:20px; text-align:center; }
+.footer span{ font-size:12px; color:#000; margin-top:10px; font-family:"微软雅黑";}
+

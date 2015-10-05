@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "爆信网--聊天室";
+}
+@section BEGINCSS
+{
+
+}
+<div class="liaotian">
+    <ul>
+        <li class="top_x_lt" style="padding-top: 5px;">
+            <div style="font-size: 16px; color: red; font-weight: bold">当前聊天者：所有人</div>
+        </li>
+        <!--聊天内容-->
+        <li class="top_y_lt">
+            <div class="top_y_1_lt">
+                <ul id="discussion" style="font-size: 14px; font-family: Arial; font-weight: bold">
+                </ul>
+            </div>
+            <div class="top_y_2" style="background-color: inherit;">
+                <span style="border-bottom: solid 1px #9a9e9e; height: 40px; line-height: 40px; display: block; text-indent: 1em; text-align: left;">所有人</span>
+                <span style="border-bottom: solid 1px #9a9e9e; height: 40px; line-height: 40px; display: block; text-indent: 1em; text-align: left;">三多</span>
+            </div>
+        </li>
+        <div style="clear: both;"></div>
+        <li class="top_z_lt">
+            <ul>
+                <a href="#">
+                    <li class="top_z_lt_1"></li>
+                </a>
+                <a href="#">
+                    <li class="top_z_lt_2"></li>
+                </a>
+                <a href="#">
+                    <li class="top_z_lt_3"></li>
+                </a>
+                <a href="#">
+                    <li class="top_z_lt_4"></li>
+                </a>
+                <a href="#">
+                    <li class="top_z_lt_5"></li>
+                </a>
+                <a href="#">
+                    <li class="top_z_lt_6"></li>
+                </a>
+                <div class="clear"></div>
+                <li class="top_y_lt_1">
+                    <!--输入内容-->
+                    <textarea id="message" style="resize: none; border: none; line-height: 20px; width: 503px; height: 98px;"></textarea></li>
+                <a href="#">
+                    <li class="top_z_lt_7" id="sendmessage"></li>
+                    <!--发送-->
+                </a>
+            </ul>
+        </li>
+    </ul>
+</div>
+@section ENDSCRIPT{
+    <script src="/Scripts/jquery-1.8.2.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script>
+        $(function () {
+            // -----------------------1.0定义chat
+            var chat = $.connection.chatHub;
+            //---------------------- 2.创建方法Hub执行后回调显示数据
+            chat.client.addNewMessageToPage = function (name, message) {
+                // 2.1将消息添加到页面
+                $('#discussion').append('<li><strong>' + htmlEncode(name) + '@DateTime.Now.ToString("yyyy/MM/dd HH:mm")'
+                    + '</strong>: ' + htmlEncode(message) + '</li>');
+            };
+            //2.2在线
+            chat.client.listAll = function (list) {
+                var html = '';
+                for (i = 0; i < list.length; i++) {
+                    html += list[i] + '&nbsp;';
+                }
+                $('#clientlist').html(html);
+            };
+            // Get the user name and store it to prepend to messages.
+            //$('#displayname').val(prompt('Enter your name:', ''));
+            // Set initial focus to message input box.  
+            $('#message').focus();
+            // ------------------3.0开始连接
+            $('#sendmessage').click(function () {
+                var dispname = '@WorkContext.NickName';
+                var message = $('#message').val();
+                if (dispname == '') {
+                    alert('您还没有登录，请先登录！');
+                    return false;
+                }
+                if (message == '') {
+                    alert('请输入信息');
+                    return false;
+                }
+                // 调用发送方法（hub首字符注意小写）.
+                //判断是否选中个人
+                chat.server.send(dispname, message);
+                $('#message').val('').focus();
+            });
+
+
+
+            $.connection.hub.start().done(function () {//webSockets、longPolling、serverSentEvents、foreverFrame
+                chat.server.sendOne("da37e11c-987b-4ff5-bf7f-97c8155b469c", "hello");
+                //chat.server.sendOne("da37e11c-987b-4ff5-bf7f-97c8155b469c", "hello");
+            })
+            $('#getclients').click(function () {
+                chat.server.list();
+            });
+        });
+        // This optional function html-encodes messages for display in the page.
+        function htmlEncode(value) {
+            var encodedValue = $('<div />').text(value).html();
+            return encodedValue;
+        }
+    </script>
+}

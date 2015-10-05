@@ -1,0 +1,242 @@
+﻿@{
+    ViewBag.Title = "爆信网--聊天室";
+    Layout = "";
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+
+    <title>详情</title>
+    <link type="text/css" rel="stylesheet" href="/Content/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="/Content/css/reset.css" /> 
+    @model BaoXin.Entity.Result.TResult<BaoXin.Entity.UsersEntity>
+
+    @{
+    
+        string fuser = string.Empty;
+        BaoXin.Entity.UsersEntity fromuser = new BaoXin.Entity.UsersEntity();
+        if (Session["User"] != null) {
+            fromuser = Session["User"] as BaoXin.Entity.UsersEntity;
+            fuser = fromuser.Id.ToString();
+        }   
+    
+    }
+
+
+    <style>
+        .fluser {
+            width:400px;
+            padding:10px;
+            float:left;
+            text-align:left;
+        }
+        .ruser {
+            width:400px;
+            padding:10px;
+            float:right;
+            text-align:right;
+        }
+        #onlineUsers li {
+            padding:5px;
+            cursor:pointer;
+            border-bottom:1px solid #999;
+        }
+
+     
+    </style>
+    <script src="/Scripts/jquery-1.7.1.min.js"></script> 
+    <script src="/Scripts/Core.js?v=@DateTime.Now"></script>
+    @Html.Partial("_EditorLayout")
+</head>
+<body>
+    <div class="liaotian">
+        <ul>
+            <li class="top_x_lt" style="padding-top: 5px;">
+                <div style="font-size: 16px; font-weight: bold" >--
+                    @if (Model.IsSuccess && Model.TData != null && !Guid.Empty.Equals(Model.TData.Id))
+                    { 
+                        <label  id="toUsers" style="color:red"  uid="@Model.TData.NickName">
+                            @Model.TData.NickName
+                        </label>
+                    }
+                    else
+                    {
+                        <label  id="toUsers" style="color:red"  uid="all">
+                            群聊
+                        </label>
+                    }
+
+               
+
+                </div>
+            </li>
+            <!--聊天内容-->
+            <li class="top_y_lt">
+                <div class="top_y_1_lt">
+                    <ul id="messageList" style="font-size: 14px; font-family: Arial; font-weight: bold;overflow-y:scroll;height:350px;overflow-x:hidden">
+                        <img src="/Content/images/loading.gif" />
+                    </ul>
+                </div>
+                <div class="top_y_2" style="background-color: inherit;">
+                    <ul id="onlineUsers" style="overflow-y: scroll; height: 350px; overflow-x: hidden">
+                    </ul>
+          
+                </div>
+            </li>
+            <div style="clear: both;"></div>
+            <li class="top_z_lt">
+                <ul>
+               
+                    <li class="top_y_lt_1">
+                        <!--输入内容-->
+                        @*<textarea id="message" style="resize: none; border: none; line-height: 20px; width: 503px; height: 98px;"></textarea>*@
+                        <textarea id="message"    style="width:606px;height:98px;"></textarea>
+                    
+
+                    </li>
+                
+                </ul>
+            </li>
+            <li class="top_z" >
+             
+                <input type="button" class="top_z_lt_7" id="sendmessage"/>
+                <input type="hidden"  id="hfto" name="hfto" value="@Model.TData.Id"/>
+                <input type="hidden" id="hftonick" name="hftonick" value="@Model.TData.NickName" />
+           
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+   
+        var um = UM.getEditor('message');
+        $(function () {
+            $("#loginSubmit").click(function () {
+                login();
+            });
+            var tuid = $("#hfto").val();
+            LoadTalks(tuid);
+            LoadUserList();
+            $("#sendmessage").click(function () {
+                var content = UM.getEditor('message').getContent();
+                var toid=$("#hfto").val();
+                YXQCore.Form.PostData("/Chat/SendChat", { tid: toid, ctx: content }, function (data) {
+                    if (data == "success") {
+                        UM.getEditor('message').setContent("");
+                        LoadTalks(toid);
+                    }
+                });
+            });
+            setInterval("LoadTalks('"+tuid+"')", 3000);
+        
+
+        }); 
+  
+
+        function LoadUserList() {
+            var curuser = '@fuser.ToLower()';
+            YXQCore.Form.PostData("/Chat/LoadOnlineUser", {}, function (data) {
+                if (data != null) {
+                    var li = "";
+                    var himg = "";
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].HeadImage == "" || data[i].HeadImage == null) {
+                            himg = "/Content/images/LOGO_03.png";
+                        } else {
+                            himg = data[i].HeadImage;
+                        }
+                        if (curuser != data[i].Id) {
+                            li += "<li id='" + data[i].Id + "' onclick=\"SetToId('" + data[i].Id + "','" + data[i].NickName + "')\"><img src='" + himg + "' width='40' height='40'>" + data[i].NickName + "</li>";
+                        }
+                    }
+                    $("#onlineUsers ").append(li);
+                }
+            });
+
+        }
+        function SetToId(itemid, nick) {
+            $("#message").val('');
+            $("#hfto").val(itemid);
+            $("#hftonick").val(nick);
+            $("#toUsers").html(nick);
+            LoadTalks(itemid);
+        }
+
+        function LoadTalks(touid) {
+            // alert(touid);
+            var fuser = '@Html.Raw(fuser.ToLower())';
+            YXQCore.Form.PostData("/Chat/LoadUserTalk", { uid: touid }, function (data) {
+                if (data != null) {
+                    var tnick = $("#hftonick").val();
+                    var fnick = "@fromuser.NickName";
+                    var str = "";
+                    var unick = "";
+                    var fcss = "fluser";
+                    var stcontent = "";
+                    for (var i = 0; i < data.length; i++) {
+                        // stcontent += "\r\n"+fuser + "---" + data[i].fromid +"----"+ (fuser != data[i].fromid);
+                        if (fuser == data[i].fromid) {
+                            fcss = "ruser";
+                            unick = fnick;
+                        } else {
+                            fcss = "fluser";
+                            unick = tnick;
+                        }
+                        str += "<li class='" + fcss + "' fuid='" + data[i].fromid + "' tuid='" + data[i].toid + "'> " + unick + ":" + data[i].content.replace("<br/>","").replace("<p>","").replace("</p>",""); + "</li>";
+                        fcss = "";
+                    }
+               
+                    $("#messageList").empty().html(str);
+                    var div = document.getElementById("messageList");
+                    div.scrollTop = div.scrollHeight;
+                    //  document.write(stcontent);
+                }
+
+            });
+        }
+
+        var returnUrl = "";
+        //用户登录
+        function login() {
+            var loginForm = document.forms["loginForm"];
+            var accountName = $("#loginName").val() ? $("#loginName").val() : "";
+            var password = $("#loginPwd").val() ? $("#loginPwd").val() : "";
+            //   var isRemember = 'input[name="test"]:checked')..checked;
+            if (!verifyLogin(accountName, password)) {
+                return;
+            }
+            var parms = new Object();
+            parms["loginName"] = accountName;
+            parms["password"] = password;
+            //parms["isRemember"] = isRemember;
+            returnUrl = '@WorkContext.Url';
+            $.post("/account/login", parms, function (data) {
+                if (data.state == "success") {
+                    window.location.href = returnUrl == "" ? "/" : returnUrl;
+                }
+                else if (data.state == "valicationErr") {
+                    alert(data.content);
+                }
+                else if (data.state == "error") {
+                    alert(data.content);
+                }
+            }, "json");
+        }
+
+        //验证登录
+        function verifyLogin(accountName, password) {
+            if (accountName.length == 0) {
+                alert("请输入邮箱或者手机号码");
+                return false;
+            }
+            if (password.length == 0) {
+                alert("请输入密码");
+                return false;
+            }
+
+            return true;
+        }
+
+    </script>
+</body>
+    </html>

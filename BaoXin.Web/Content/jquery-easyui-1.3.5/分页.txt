@@ -1,0 +1,83 @@
+<script src="~/Content/jquery-easyui-1.3.5/jquery.min.js"></script>
+<script type="text/javascript">
+    
+    var pageSize = 10;//每页显示的记录条数
+    var curPage = 0;
+    var lastPage;
+    var direct = 0;
+    var len;
+    var page;
+    $(document).ready(function () {
+        len = $("#table tr").length;
+        page = len % pageSize == 0 ? len / pageSize : Math.floor(len / pageSize) + 1;//根据记录条数，计算页数
+        //  alert("page==="+page);
+        curPage = 1;
+        displayPage(1);//显示第一页
+        $("#btn1").click(function () {
+            curPage = 1;
+            displayPage();
+        });
+        $("#btn2").click(function () {
+            direct = -1;
+            displayPage();
+        });
+        $("#btn3").click(function () {
+            direct = 1;
+            displayPage();
+        });
+        $("#btn4").click(function () {
+            curPage = page;
+            displayPage();
+        });
+    });
+
+    function displayPage() {
+        if ((curPage <= 1 && direct == -1) || (curPage >= page && direct == 1)) {
+            direct = 0;
+            alert("已经是第一页或者最后一页了");
+            return;
+        }
+        lastPage = curPage;
+        curPage = (curPage + direct + len) % len;
+        var begin = (curPage - 1) * pageSize;//起始记录号
+        var end = begin + pageSize;
+        if (end > len) end = len;
+        $("#table tr").hide();
+        $("#table tr").each(function (i) {
+            if (i >= begin && i < end)//显示第page页的记录
+                $(this).show();
+        });
+
+    }
+
+</script>
+<table id="table">
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息抓取1</td><td>航班信息发布</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布2</td><td>1航班信息发布</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布 3</td><td>2航班信息发布</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布 4</td><td>2航班信息发布</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布5</td><td>3航班信息发布</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布6</td><td>4航班信息发布</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布7</td><td>5航班信息发布</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布8</td><td>6航班信息发布</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布9</td><td>98</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布10</td><td>99</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息抓取11</td><td>航班信息发布</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布12</td><td>1航班信息发布</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布 13</td><td>2航班信息发布</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布14</td><td>3航班信息发布</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布15</td><td>100</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布16</td><td>4航班信息发布</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布17</td><td>5航班信息发布</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布18</td><td>6航班信息发布</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布19</td><td>98</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布20</td><td>99</td></tr>
+ <tr><td><input type="checkbox" name="checkbox"/></td><td>航班信息发布21</td><td>100</td></tr>
+</table>
+<input type=button value="全选" onClick="checkAll()">
+<input type=button value="全不选" onClick="uncheckAll()">
+<input type=button value="反选" onClick="switchAll()">
+<input type=button id="btn1" value="首页" >
+<input type=button id="btn2" value="上一页">
+<input type=button id="btn3" value="下一页" >
+<input type=button id="btn4" value="尾页" >

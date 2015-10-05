@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BaoXinModelStoreContainer" CdmEntityContainer="BaoXinEntities">
+    <EntitySetMapping Name="SendFile">
+      <EntityTypeMapping TypeName="IsTypeOf(BaoXinModel.SendFile)">
+        <MappingFragment StoreEntitySet="SendFile">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Accept_UserName" ColumnName="Accept_UserName" />
+          <ScalarProperty Name="Send_UserName" ColumnName="Send_UserName" />
+          <ScalarProperty Name="Send_File" ColumnName="Send_File" />
+          <ScalarProperty Name="Send_Time" ColumnName="Send_Time" />
+          <ScalarProperty Name="Send_FileName" ColumnName="Send_FileName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SpeechInfo">
+      <EntityTypeMapping TypeName="IsTypeOf(BaoXinModel.SpeechInfo)">
+        <MappingFragment StoreEntitySet="SpeechInfo">
+          <ScalarProperty Name="Sourcecity" ColumnName="Sourcecity" />
+          <ScalarProperty Name="cityname" ColumnName="cityname" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="DelTime" ColumnName="DelTime" />
+          <ScalarProperty Name="DelUserId" ColumnName="DelUserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FromUser" ColumnName="FromUser" />
+          <ScalarProperty Name="SpeachContent" ColumnName="SpeachContent" />
+          <ScalarProperty Name="SpeechImage" ColumnName="SpeechImage" />
+          <ScalarProperty Name="IsVip" ColumnName="IsVip" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="SumbitTime" ColumnName="SumbitTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersFriend">
+      <EntityTypeMapping TypeName="IsTypeOf(BaoXinModel.UsersFriend)">
+        <MappingFragment StoreEntitySet="UsersFriend">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FriendId" ColumnName="FriendId" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="BaoXinModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="isadmin" ColumnName="isadmin" />
+          <ScalarProperty Name="OtherDelTime" ColumnName="OtherDelTime" />
+          <ScalarProperty Name="IsOtherDel" ColumnName="IsOtherDel" />
+          <ScalarProperty Name="DelTime" ColumnName="DelTime" />
+          <ScalarProperty Name="IsCanDel" ColumnName="IsCanDel" />
+          <ScalarProperty Name="HeadSmallImage" ColumnName="HeadSmallImage" />
+          <ScalarProperty Name="HeadImage" ColumnName="HeadImage" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+          <ScalarProperty Name="RankCredits" ColumnName="RankCredits" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Contactaddr" ColumnName="Contactaddr" />
+          <ScalarProperty Name="Contactqq" ColumnName="Contactqq" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="NickName" ColumnName="NickName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChatInfo">
+      <EntityTypeMapping TypeName="BaoXinModel.ChatInfo">
+        <MappingFragment StoreEntitySet="ChatInfo">
+          <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+          <ScalarProperty Name="sendtime" ColumnName="sendtime" />
+          <ScalarProperty Name="ispublic" ColumnName="ispublic" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="expression" ColumnName="expression" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="user_to" ColumnName="user_to" />
+          <ScalarProperty Name="user_from" ColumnName="user_from" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="BaoXinModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shop_Photo">
+      <EntityTypeMapping TypeName="BaoXinModel.Shop_Photo">
+        <MappingFragment StoreEntitySet="Shop_Photo">
+          <ScalarProperty Name="BoolYX" ColumnName="BoolYX" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="PhotoURL" ColumnName="PhotoURL" />
+          <ScalarProperty Name="PhontName" ColumnName="PhontName" />
+          <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shop_Store">
+      <EntityTypeMapping TypeName="BaoXinModel.Shop_Store">
+        <MappingFragment StoreEntitySet="Shop_Store">
+          <ScalarProperty Name="BoolPass" ColumnName="BoolPass" />
+          <ScalarProperty Name="PeopleId" ColumnName="PeopleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BoolYX" ColumnName="BoolYX" />
+          <ScalarProperty Name="Agreement" ColumnName="Agreement" />
+          <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+          <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
+          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+          <ScalarProperty Name="StoreNum" ColumnName="StoreNum" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

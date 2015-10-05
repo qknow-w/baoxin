@@ -1,0 +1,112 @@
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\bin\Release\BaoXin.Web.Framework.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\bin\Release\BaoXin.Web.Framework.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\bin\Release\BaoXin.BLL.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\bin\Release\BaoXin.Core.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\bin\Release\BaoXin.Entity.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\bin\Release\BaoXin.DAL.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\bin\Release\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\bin\Release\BaoXin.SqlHelper.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\bin\Release\BaoXin.BLL.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\bin\Release\BaoXin.Core.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\bin\Release\BaoXin.Entity.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\bin\Release\BaoXin.DAL.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\bin\Release\Newtonsoft.Json.xml
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\bin\Release\BaoXin.SqlHelper.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.Web.Framework.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.Web.Framework.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.BLL.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.Core.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.Entity.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.DAL.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.SqlHelper.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.BLL.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.Core.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.Entity.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.DAL.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\Newtonsoft.Json.xml
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.SqlHelper.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.pdb
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.Web.Framework.dll
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.Web.Framework.pdb
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.BLL.dll
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.Core.dll
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.Entity.dll
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.DAL.dll
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\Newtonsoft.Json.dll
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.SqlHelper.dll
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.BLL.pdb
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.Core.pdb
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.Entity.pdb
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.DAL.pdb
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\Newtonsoft.Json.xml
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\bin\Release\BaoXin.SqlHelper.pdb
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.csprojResolveAssemblyReference.cache
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.dll
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.pdb
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.Web.Framework.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.Web.Framework.pdb
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.BLL.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.Core.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.Entity.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\System.Web.Mvc.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.DAL.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\EntityFramework.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\Newtonsoft.Json.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.SqlHelper.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.BLL.pdb
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.Entity.pdb
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\System.Web.Mvc.xml
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.DAL.pdb
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\EntityFramework.xml
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\Newtonsoft.Json.xml
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.SqlHelper.pdb
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\zh-Hans\System.Web.Mvc.resources.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\zh-Hans\EntityFramework.resources.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.csprojResolveAssemblyReference.cache
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.pdb
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.Web.Framework.dll
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.Web.Framework.pdb
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.BLL.dll
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.Core.dll
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.Entity.dll
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.DAL.dll
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\EntityFramework.dll
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\Newtonsoft.Json.dll
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.SqlHelper.dll
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.BLL.pdb
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.Entity.pdb
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.DAL.pdb
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\EntityFramework.xml
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\BaoXin.SqlHelper.pdb
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\bin\Release\zh-Hans\EntityFramework.resources.dll
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.csprojResolveAssemblyReference.cache
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.dll
+E:\bx\Code\BaoXin\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.pdb
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\BaoXin.Web.Framework.dll
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\BaoXin.Web.Framework.pdb
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\BaoXin.BLL.dll
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\BaoXin.Core.dll
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\BaoXin.Entity.dll
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\System.Web.Mvc.dll
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\BaoXin.DAL.dll
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\EntityFramework.dll
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\Newtonsoft.Json.dll
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\BaoXin.SqlHelper.dll
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\BaoXin.BLL.pdb
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\BaoXin.Entity.pdb
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\System.Web.Mvc.xml
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\BaoXin.DAL.pdb
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\EntityFramework.xml
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\BaoXin.SqlHelper.pdb
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\zh-Hans\System.Web.Mvc.resources.dll
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\bin\Release\zh-Hans\EntityFramework.resources.dll
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.csprojResolveAssemblyReference.cache
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.dll
+G:\项目\爆信\BaoXin3\BaoXin.Web.Framework\obj\Release\BaoXin.Web.Framework.pdb

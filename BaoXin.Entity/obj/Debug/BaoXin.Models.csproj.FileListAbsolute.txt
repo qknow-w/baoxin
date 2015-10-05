@@ -1,0 +1,5 @@
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin\BaoXin.Models\bin\Debug\BaoXin.Models.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin\BaoXin.Models\bin\Debug\BaoXin.Models.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin\BaoXin.Models\obj\Debug\BaoXin.Models.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin\BaoXin.Models\obj\Debug\BaoXin.Models.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin\BaoXin.Models\obj\Debug\BaoXin.Models.pdb

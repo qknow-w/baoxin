@@ -1,0 +1,91 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ImageUploadTest</title>
+    <script src="~/SWFUpload/swfupload.js"></script>
+    <script src="~/SWFUpload/handlers.js"></script>
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+    <script type="text/javascript">
+        var swfu;
+        window.onload = function () {
+            swfu = new SWFUpload({
+                // Backend Settings
+                upload_url: "/Unity/Upload",
+                post_params: {
+                    "ASPSESSID": "@Session.SessionID"
+                },
+                // File Upload Settings
+                file_size_limit: "300 KB",
+                file_types: "*.jpg",
+                file_types_description: "JPG Images",
+                file_upload_limit: 0,
+                
+                swfupload_preload_handler: preLoad,
+                swfupload_load_failed_handler: loadFailed,
+                file_queue_error_handler: fileQueueError,
+                file_dialog_complete_handler: fileDialogComplete,
+                upload_progress_handler: uploadProgress,
+                upload_error_handler: uploadError,
+                upload_success_handler: getUpImage,
+             
+                // Button settings
+                button_image_url: "/SWFUpload/images/XPButtonNoText_160x22.png",
+                button_placeholder_id: "spanButtonPlaceholder",
+                button_width: 160,
+                button_height: 22,
+                button_text: '<span class="button">选择图片<span class="buttonSmall">(最大300 KB)</span></span>',
+                button_text_style: '.button { font-family: Helvetica, Arial, sans-serif; font-size: 14pt; } .buttonSmall { font-size: 10pt; }',
+                button_text_top_padding: 1,
+                button_text_left_padding: 5,
+                // Flash Settings
+                flash_url: "/SWFUpload/swfupload.swf", // Relative to this file
+                flash9_url: "/SWFUpload/swfupload_FP9.swf", // Relative to this file
+                custom_settings: {
+                    upload_target: "divFileProgressContainer"
+                },
+            });
+        }
+
+        function getUpImage(file, serverData) {
+            debugger;
+            var obj = eval('(' + serverData + ')');
+            if (obj.state == "ok") {
+                alert("成功");
+                alert(obj.content);
+                $("#imgUrl").attr("src", obj.content);
+            } else {
+                alert(obj.content);
+            }
+
+        }
+    </script>
+</head>
+<body>
+
+    <div id="header">
+    </div>
+
+    <div id="content">
+        <div id="swfu_container" style="margin: 0px 10px;">
+            <div>
+                <!--上传按钮-->
+                <span id="spanButtonPlaceholder"></span>
+            </div>
+            <!--显示进度-->
+            <div id="divFileProgressContainer" style="height: 75px;"></div>
+            <!--图片显示-->
+            <div id="thumbnails"></div>
+            <img id="imgUrl" />
+
+
+        </div>
+    </div>
+
+</body>
+</html>

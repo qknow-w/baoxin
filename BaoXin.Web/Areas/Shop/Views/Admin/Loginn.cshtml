@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/css/admin/login.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery.js"></script>
+    <title>Login</title>
+</head>
+<body>
+    <form action="/shop/admin/dologinn"  method="POST">
+        <div class="boxLogin">
+            <dl>
+                <dd>
+                    <div class="s1">
+                        账&nbsp;号:
+                    </div>
+                    <div class="s2">
+                        <input type="text" class="text" name="loginName">
+                        <span class="errorMsg"></span>
+                    </div>
+                </dd>
+                <dd>
+                    <div class="s3">
+                        密&nbsp;码:
+                    </div>
+                    <div class="s4">
+                        <input type="password" class="text" name="Password">
+                        <span class="errorMsg1"></span>
+                    </div>
+                </dd>
+                <dd>
+                  @*  <div class="s5">
+                        验证码:
+                    </div>
+                    <div class="s6">
+                        <input type="text" class="text" maxlength="5">
+                        <img class="easyui-tooltip" title="点击切换验证码" src="/shop/Admin/GetValidateCode" alt="点击切换验证码">
+                        <span class="errorMsg"></span>
+                    </div>*@
+                </dd>
+                <dd>
+                    <div class="load">
+                        <img src="../../../../Content/images/login/loading.gif" alt="">
+                    </div>
+                </dd>
+                <dd></dd>
+            </dl>
+            <div class="s8">
+                <input type="submit" value="" class="sign" onclick="javascript">
+            </div>
+        </div>
+        <div class="copyright">
+            <p>最佳浏览环境：chrome.firebox等，1280×800显示分辨率。</p>
+        </div>
+    </form>
+
+
+
+</body>
+</html>
+<script type="text/javascript">
+
+    //绑定图片切换验证码事件
+    $(".s6 img").click(function () {
+        // alert("111");
+        var myDate = new Date();
+        var milliseconds = myDate.getMilliseconds(); //获取当前毫秒数(0-999)
+        $(this).attr("src", "/Admin/Admin/GetValidateCode?time=" + milliseconds); //加上时间 避免缓存
+    });
+
+    //绑定登陆事件
+    $(".s8 input:button").click(function () {
+        // alert("111");
+        location.href = "/Admin/BaoXianGuanLi/BaoXianGuanLi";
+    });
+
+</script>
+
+

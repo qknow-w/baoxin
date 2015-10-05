@@ -1,0 +1,17 @@
+﻿@if (Session["User"]==null)
+{
+    
+    <a class="denglu" href="" onclick="showBg(); ">1111111111111</a>
+    <a  class="zhuce" href="@Url.Action("register", "account", new RouteValueDictionary { { "returnUrl", WorkContext.Url } })"></a>
+}
+else
+{
+    
+var user=Session["User"]  as BaoXin.Entity.UsersEntity;
+   
+    <li style="padding-top:30px;float:right;">
+        欢迎您: @user.NickName  &nbsp;
+        <a href="@Url.Action("logout", "account")">[退出]</a>
+    </li>
+ 
+}

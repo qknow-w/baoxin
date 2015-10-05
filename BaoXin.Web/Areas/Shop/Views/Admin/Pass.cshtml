@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Pass";
+    Layout = "~/Areas/Shop/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h1>>>店铺审核</h1>
+<div style="margin: 0 0 0 30px">
+   @* <span>保险名称：</span>
+    <input class="easyui-validatebox" type="text" id="chengXing">
+    <a id="query" class="easyui-linkbutton">查询</a>
+    <a href="/Admin/BaoXianGuanLi/AddBaoXian" class="easyui-linkbutton">添加</a>
+    <a id="updata" class="easyui-linkbutton">修改</a>
+    <a onclick="DeleteBaoXian()" class="easyui-linkbutton">删除</a>*@
+</div>
+<div style="margin: 20px 0 0 30px">
+    <table  id="tbshop" class="easyui-datagrid" title="店铺信息" style="width: auto; height: 320px"
+           data-options="singleSelect:true,collapsible:true,url:'/shop/admin/ShopJson',rownumbers:true,pagination:true,pageSize:20">
+        <thead>
+            <tr>
+                <th data-options="field:'StoreId',width:80,hidden:true"></th>
+                <th data-options="field:'StoreName',width:100">店铺名称</th>
+                <th data-options="field:'StoreUser',width:100,align:'right'">申请用户</th>
+                <th data-options="field:'PeopleName',width:100,align:'right'">姓名</th>
+                <th data-options="field:'PeopleAdd',width:100,align:'right'">地址</th>
+                <th data-options="field:'PeoplePhone',width:100,align:'right'">联系电话</th>
+                <th data-options="field:'PeopleEmail',width:100,align:'right'">Email</th>
+                <th data-options="field:'PeoplePay',width:100,align:'right'">支付宝</th>
+                <th data-options="field:'AddTime',width:150,align:'right'">申请时间</th>
+                <th data-options="field:'BoolPass',width:100,align:'right',formatter:function(value,row){ if(row.BoolPass==false){return '未通过'};if(row.BoolPas!==false){return '通过'}}">状态</th>
+
+                <th data-options="field:'22',width:100,align:'right',formatter:formatter1,">操作</th>
+            
+            </tr>
+        </thead>
+    </table>
+   
+</div>
+<script type="text/javascript">
+    function formatter1(value, row, index) {
+        //  var html = '  <a href="#"  onclick="onClickRow(' + row.StoreId + ',' + row.PeopleEmail + ')">审核通过</a>';
+        var html = "<a  href='javascript:onClickRow()'>审核通过</a>";
+        return html;
+    }
+
+
+    function onClickRow(index) {
+
+        if ($('#tbshop').datagrid('getSelected').BoolPass == true) {
+            alert("该店铺已通过审核");
+            return false;
+        }
+      //  var rows = $('#tbshop').datagrid('getSelected').PeopleEmail;
+      //  console.log();
+        //var i = $('#tbshop').datagrid('selectRow', index);
+
+        //console.log(i);
+        location.href = "/shop/admin/PassExam/?id=" + $('#tbshop').datagrid('getSelected').StoreId + "&email=" + $('#tbshop').datagrid('getSelected').PeopleEmail;
+
+    }
+</script>

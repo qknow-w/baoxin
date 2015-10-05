@@ -1,0 +1,104 @@
+﻿@{
+    Layout = null;
+}
+@using BaoXin.BLL
+@model List<BaoXin.Entity.SpeechInfoPart>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>无标题文档</title>
+    <link href="/Content/css/style.css" rel="stylesheet" />
+    <link href="/Content/css/reset.css" rel="stylesheet" />
+    @*<script src="~/SWFUpload/swfupload.js"></script>
+    <script src="~/SWFUpload/handlers.js"></script>*@ 
+    <script src="/Scripts/jquery-1.7.1.min.js"></script>
+
+    <script src="/Scripts/artDialog.source.js?skin=blue"></script> 
+    <script src="/Scripts/iframeTools.source.js"></script>
+    <script src="/Scripts/Core.js?v=@DateTime.Now"></script>
+    <script src="~/Scripts/utils.js"></script>
+    @Html.Partial("_EditorLayout")
+    <script type="text/javascript">
+        $(function () {
+           
+            send();
+
+        });
+        //--------------------------------------------初始化发言记录-------------------------
+ 
+        //------------------------------------------发送：---------------------------------------------------
+        function send() {
+            $("#btnSend").click(function () {
+                var content = UM.getEditor('sendContent').getContentTxt();
+                var uploadImage = $("#upimg").attr("src");
+               // alert(uploadImage);
+               // return;
+                if (uIsNull(content)) {
+                    alert("发送内容不能为空!");
+                    return;
+                }
+                
+                if (content.length > 200) {
+                    alert("发送的内容不能超过200个字");
+                    return;
+                }
+                var ct = $("#city").val();
+                $.post("/Speach/Save", { SpeachContent: content, SpeechImage: uploadImage,cy:ct }, function (data) {
+                    if (data.state == "ok") {
+                        UM.getEditor('sendContent').setContent("");
+                        //if ($("#uploadImage") != undefined) {
+                        //    $("#uploadImage").remove();
+                        //}
+
+                    } else {
+                        alert(data.content);
+                    }
+                    var win = art.dialog.open.origin;//来源页面
+                    // 如果父页面重载或者关闭其子对话框全部会关闭
+                    win.location.reload();
+                }, "json");
+            });
+        }
+            //-----------------------------------------上传图片
+         
+
+     
+    </script>
+</head>
+<body style="background-color: White; width: 580px;">
+
+    <ul>
+
+
+         
+        <li  > 
+            <ul>
+
+                <li > 
+                    <!--输入内容-->
+                    <input type="hidden" value="@Request["ci"]" id="city" name="city"/>
+                     @*<div id="upImg"></div>*@
+                    @*<textarea id="message" style="resize: none; border: none; line-height: 20px; width: 503px; height: 98px;"></textarea>*@
+                    <textarea id="sendContent" style="width: 580px; height: 300px;">     </textarea>
+
+
+                </li>
+
+            </ul>
+        </li>
+        <li class="top_z" style="width: 580px;">
+            <ul style="width: 311px;">
+                <a href="#">
+                    <li class="top_z_7" id="btnSend"></li>
+                </a>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        var um = UM.getEditor('sendContent');
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/shop/css/style.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery.js"></script>
+    <title>添加商品</title>
+</head>
+<style>
+	body{ font-size:18px; font-weight:bold; font-family:"微软雅黑", "特粗黑体", "黑体";}
+	.zhifu{ background: url(@Url.Content("~/content/Shop/images/dengl.png")) no-repeat; height:50px; width:138px; font-size:18px; text-align:center; line-height:50px; color:#FFFFFF;}
+	.xiugai{ background: url(@Url.Content("~/content/Shop/images/xiugai.png")) no-repeat; height:50px; width:145px; font-size:18px; text-align:center; line-height:50px; color:#FFFFFF;}
+	.quxiao{ background: url(@Url.Content("~/content/Shop/images/quxiao.png")) no-repeat; height:50px; width:145px; font-size:18px; text-align:center; line-height:50px; color:#FFFFFF;}
+	.zq a{ color:#FFFFFF; text-decoration:none;}
+</style>
+
+
+    <body>
+        <div id="big1"  style="width: 950px">
+            <form id="ff" method="POST" enctype="multipart/form-data" action="/shop/shop/DoAddGoods">
+                <table width="1008" height="200" border="0" align="center">
+                    <tr>
+                        <td height="85" colspan="5" style="color: #f9b125; font-weight: 800; font-family: '微软雅黑'; font-size: 30px;">
+                            <div align="center">我的商品</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="1" colspan="4"></td>
+                        <td width="711"></td>
+                    </tr>
+                    <tr style="height: 0px">
+                        <td height="0" colspan="4"></td>
+                        <td>
+                    </tr>
+                    <tr>
+                        <td height="0" colspan="4"></td>
+                        <td>
+                    </tr>
+                    <tr>
+                        <td height="80" colspan="4">
+                            <div align="right">商品名称：</div>
+                        </td>
+                        <td>
+                            <input type="text" name="GoodsName" style="background:url(@Url.Content("~/Content/shop/images/input_bj.png")) no-repeat; line-height:32px; height:32px; width:400px; border:0; padding:2px 6px" />
+                        </td>
+                    </tr>
+
+                </table>
+                <table width="868" align="center">
+                    <tr>
+                        <td width="219">
+                            <div align="right">单价：</div>
+                        </td>
+                        <td width="155">
+                            <div align="left">
+                                <input type="text" name="GoodsPrice" style="background:url(@Url.Content("~/Content/shop/images/danjia.png")) no-repeat; height:33px; width:155px; border:0; padding:2px 6px" />
+                            </div>
+                        </td>
+                        <td width="80">
+                            <div align="left">数量：</div>
+                        </td>
+                        <td width="394">
+                            <div align="left">
+                                <input type="text" name="Goodsnumber" style="background:url(@Url.Content("~/Content/shop/images/shuliang.png")) no-repeat; height:33px; width:155px; border:0; padding:2px 6px" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <p>&nbsp;</p>
+                <table align="center">
+                    <tr>
+                        <td width="446">
+                            <input type="file" name="PhontName" /></td>
+                    </tr>
+                </table>
+                <p>&nbsp;</p>
+                <table width="565px" align="center" class="zq">
+                    <tr>
+                        <td width="216">
+                            <div align="center" id="comfig" class="zhifu"><a href="#">确定</a></div>
+                        </td>
+                       
+                        <td width="149">
+                            <div align="center" class="quxiao"><a href="/index">取消</a></div>
+                        </td>
+                    </tr>
+                </table>
+                 
+            </form>
+        </div>
+    </body>
+    <script type="text/javascript">
+        $(function () {
+            $("#comfig").click(function () {
+
+
+                // alert("请完整填写各项内容，否则不能正常注册店铺");
+                if ($("input[type=text][name=GoodsName]").val() == "" || $("input[type=text][name=GoodsPrice]").val() == "" || $("input[type=file][name=PhontName]").val() == "" ||
+                    $("input[type=text][name=Goodsnumber]").val() == "") {
+                    alert("请完整填写各项内容，否则不能正常添加商品");
+                    return false;
+                }
+
+               
+
+                $("#ff").submit();
+              
+
+
+            });
+        })
+
+</script>
+</html>

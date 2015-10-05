@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetCityByIp</title>
+    <script src="~/Scripts/jquery-1.7.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btnCity").click(function () {
+                alert('@WorkContext.IP');
+                alert('@WorkContext.CityName');
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+    <div>
+        <input type="button" id="btnCity" value="获取城市" />
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Entity\bin\Release\BaoXin.Entity.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Entity\bin\Release\BaoXin.Entity.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Entity\obj\Release\BaoXin.Entity.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin - 副本\BaoXin.Entity\obj\Release\BaoXin.Entity.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Entity\bin\Release\BaoXin.Entity.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Entity\bin\Release\BaoXin.Entity.pdb
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Entity\obj\Release\BaoXin.Entity.dll
+C:\Users\Administrator\Desktop\爆信网\Codes\BaoXin最新\BaoXin.Entity\obj\Release\BaoXin.Entity.pdb
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Entity\bin\Release\BaoXin.Entity.dll
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Entity\bin\Release\BaoXin.Entity.pdb
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Entity\obj\Release\BaoXin.Entity.dll
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Entity\obj\Release\BaoXin.Entity.pdb
+E:\PartyJob\0.爆信网\Codes\BaoXin最新\BaoXin.Entity\obj\Release\BaoXin.Entity.csprojResolveAssemblyReference.cache
+E:\Person\bx\Code\BaoXin\BaoXin.Entity\bin\Release\BaoXin.Entity.dll.config
+E:\Person\bx\Code\BaoXin\BaoXin.Entity\bin\Release\BaoXin.Entity.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Entity\bin\Release\BaoXin.Entity.pdb
+E:\Person\bx\Code\BaoXin\BaoXin.Entity\bin\Release\EntityFramework.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Entity\bin\Release\EntityFramework.xml
+E:\Person\bx\Code\BaoXin\BaoXin.Entity\bin\Release\zh-Hans\EntityFramework.resources.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Entity\obj\Release\BaoXin.Entity.csprojResolveAssemblyReference.cache
+E:\Person\bx\Code\BaoXin\BaoXin.Entity\obj\Release\BaoXin.Entity.dll
+E:\Person\bx\Code\BaoXin\BaoXin.Entity\obj\Release\BaoXin.Entity.pdb
+E:\bx\Code\BaoXin\BaoXin.Entity\bin\Release\BaoXin.Entity.dll.config
+E:\bx\Code\BaoXin\BaoXin.Entity\bin\Release\BaoXin.Entity.dll
+E:\bx\Code\BaoXin\BaoXin.Entity\bin\Release\BaoXin.Entity.pdb
+E:\bx\Code\BaoXin\BaoXin.Entity\bin\Release\EntityFramework.dll
+E:\bx\Code\BaoXin\BaoXin.Entity\bin\Release\EntityFramework.xml
+E:\bx\Code\BaoXin\BaoXin.Entity\bin\Release\zh-Hans\EntityFramework.resources.dll
+E:\bx\Code\BaoXin\BaoXin.Entity\obj\Release\BaoXin.Entity.csprojResolveAssemblyReference.cache
+E:\bx\Code\BaoXin\BaoXin.Entity\obj\Release\BaoXin.Entity.dll
+E:\bx\Code\BaoXin\BaoXin.Entity\obj\Release\BaoXin.Entity.pdb
+G:\项目\爆信\BaoXin3\BaoXin.Entity\bin\Release\BaoXin.Entity.dll.config
+G:\项目\爆信\BaoXin3\BaoXin.Entity\bin\Release\BaoXin.Entity.dll
+G:\项目\爆信\BaoXin3\BaoXin.Entity\bin\Release\BaoXin.Entity.pdb
+G:\项目\爆信\BaoXin3\BaoXin.Entity\bin\Release\EntityFramework.dll
+G:\项目\爆信\BaoXin3\BaoXin.Entity\bin\Release\EntityFramework.xml
+G:\项目\爆信\BaoXin3\BaoXin.Entity\bin\Release\zh-Hans\EntityFramework.resources.dll
+G:\项目\爆信\BaoXin3\BaoXin.Entity\obj\Release\BaoXin.Entity.csprojResolveAssemblyReference.cache
+G:\项目\爆信\BaoXin3\BaoXin.Entity\obj\Release\BaoXin.Entity.dll
+G:\项目\爆信\BaoXin3\BaoXin.Entity\obj\Release\BaoXin.Entity.pdb

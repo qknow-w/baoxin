@@ -1,0 +1,16 @@
+G:\项目\爆信\BaoXin3\BaoXin.BLL\bin\Release\BaoXin.BLL.dll
+G:\项目\爆信\BaoXin3\BaoXin.BLL\bin\Release\BaoXin.BLL.pdb
+G:\项目\爆信\BaoXin3\BaoXin.BLL\bin\Release\BaoXin.Core.dll
+G:\项目\爆信\BaoXin3\BaoXin.BLL\bin\Release\BaoXin.DAL.dll
+G:\项目\爆信\BaoXin3\BaoXin.BLL\bin\Release\BaoXin.Entity.dll
+G:\项目\爆信\BaoXin3\BaoXin.BLL\bin\Release\BaoXin.SqlHelper.dll
+G:\项目\爆信\BaoXin3\BaoXin.BLL\bin\Release\EntityFramework.dll
+G:\项目\爆信\BaoXin3\BaoXin.BLL\bin\Release\Newtonsoft.Json.dll
+G:\项目\爆信\BaoXin3\BaoXin.BLL\bin\Release\BaoXin.DAL.pdb
+G:\项目\爆信\BaoXin3\BaoXin.BLL\bin\Release\BaoXin.Entity.pdb
+G:\项目\爆信\BaoXin3\BaoXin.BLL\bin\Release\BaoXin.SqlHelper.pdb
+G:\项目\爆信\BaoXin3\BaoXin.BLL\bin\Release\EntityFramework.xml
+G:\项目\爆信\BaoXin3\BaoXin.BLL\bin\Release\zh-Hans\EntityFramework.resources.dll
+G:\项目\爆信\BaoXin3\BaoXin.BLL\obj\Release\BaoXin.BLL.csprojResolveAssemblyReference.cache
+G:\项目\爆信\BaoXin3\BaoXin.BLL\obj\Release\BaoXin.BLL.dll
+G:\项目\爆信\BaoXin3\BaoXin.BLL\obj\Release\BaoXin.BLL.pdb

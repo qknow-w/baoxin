@@ -1,0 +1,387 @@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_YellowLayout.cshtml";
+    var user = new BaoXin.Entity.UsersEntity();
+    if (Session["User"] != null)
+    {
+        user = Session["User"] as UsersEntity;
+    }
+    List<City> citys = new List<City>();
+    if (ViewBag.Citys != null)
+    {
+        citys = ViewBag.Citys as List<City>;
+    }
+}
+@using BaoXin.Core;
+@using BaoXin.Entity
+@model BaoXin.Entity.Result.TResult<List<BaoXin.Entity.SpeechInfoEntity>>
+@section BEGINCSS
+{
+
+}
+
+
+
+<style type="text/css">
+    .zhanshi {
+        height: 500px;
+        overflow: hidden;
+
+    }
+
+    #zhanshi:hover {
+        overflow-y: scroll;
+    }
+</style>
+<script type="text/javascript">
+    var i = 0;
+    var timeout1;
+    $(function () {
+        RandomBg();
+        scroll();
+      
+
+        $("#zhanshi").hover(function () {
+            clearTimeout(timeout1);
+           
+           
+        }, function () {
+          
+            if (delfag == 1) {
+               
+                scroll();
+            } else {
+               
+                clearTimeout(timeout);
+            }
+            
+           
+        });
+
+    });
+
+
+    var count = 0;
+
+    var cout2 = '@Model.TData.Count';
+    var count3 = Number(cout2);
+    if (count3 % 4 > 0) {
+        count = Math.ceil(count3 / 4);
+        } else {
+        count = count3 / 4;
+        }
+
+
+
+    function scroll(parameters) {
+        i++;
+      
+
+      
+
+
+
+
+        if ($("#zhanshi").scrollTop() > (count)*250-800) {
+
+            $("#zhanshi").scrollTop(0);
+            i = 1;
+            timeout1 = setTimeout("scroll()", 100);
+        } else {
+          
+            $("#zhanshi").scrollTop(1 * i);
+            timeout1 = setTimeout("scroll()", 100);
+          
+
+        }
+
+
+
+    }
+
+
+    var flag = 0;
+    function ShowDetail(tit, idtemid) {
+        if (flag == 0) {
+            art.dialog.open('/SendContent?id=' + idtemid, { title: tit, lock: true, drag: false, show: true, width: 630, height: 400 });
+        } else {
+
+        }
+
+    }
+
+
+    function RandomBg(parameters) {
+
+
+        $(".bg").each(function () {
+            var bg = ["#f49c32", "#73bd40", "#f35f23", "#0187ce"];
+            var str = bg[Math.floor(Math.random() * bg.length)];
+
+            $(this).css("background", str);
+        });
+
+
+       
+
+    }
+    //function GoDel() {
+
+    //    $("#switchImage").unbind("click");
+    //    // location.reload();
+
+    //    // window.location.href = "DelSpeechInfo";
+    //}
+
+</script>
+<div class="zhanshi" id="zhanshi" style="float: left; width: 100%; margin: 10px auto;margin-right: 5px;height: 800px;z-index: 9999!important">
+    <ul id="scrolll" style="width: 1200px; margin-left: 50px; height: auto;">
+
+
+
+        @if (Model.TData.Count > 0)
+        {
+
+
+
+
+            foreach (var item in Model.TData)
+            {
+              
+                
+                
+            <li id="switchImage" style="width: 282px;height: 252px;margin-top: 5px;margin-left:4px;position: relative" uid="@item.FromUser" onclick="ShowDetail('@StringHelper.SubString(item.SpeachContent, 12)','@item.Id');">
+                <a href="#">
+                    @*   <img  src="@(string.IsNullOrEmpty(item.SpeechImage) ? "/Content/images/LOGO_03.png" : item.SpeechImage)"  style="border: 2px;"  /></a>*@
+
+                    @if (item.SpeechImage == null)
+                    {
+                        <a class="bg"  style="width: 282px;height: 252px;display: block"  ></a>
+                        <h5 style="width: 100px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center">
+                            @* <a  class="moreContent" title="更多..." href="javascript:;" style="color: #f0f8ff; font-size: 15px; display: block; overflow: hidden; width: 240px; height: 100px; white-space: nowrap; text-overflow: ellipsis; position: absolute; top: 50px; left: 0px;-o-text-overflow:ellipsis;">@Html.Raw(item.SpeachContent)</a>*@                        
+                        </h5>
+                         <style type="text/css"> 
+.div4{ 
+ width: 200px; height: 135px; 
+ position: absolute; top: 50px; left: 50px;overflow: hidden;color: #f0f8ff; font-size: 18px;line-height: 1.5;letter-spacing: 1.5px;font-family: 'Microsoft YaHei'
+} 
+</style> 
+<div class="div4"> 
+@Html.Raw(item.SpeachContent)
+</div>
+
+
+                    }
+                    else
+                    {
+                        <img  src="@item.SpeechImage"  style="width: 282px;height: 252px;"  />
+                            
+                    }
+
+                </a>
+
+                @Html.Raw("<a href=\"javascript:\" onclick=\" DelItem('" + item.Id + "')\" style='position: absolute;color: red;right: 5px;top:5px;display:none'>删除</a>")
+
+            </li>
+            }
+
+
+        }
+
+
+
+
+    </ul>
+</div>
+
+<div class="clear"></div>
+
+
+
+
+
+@section ENDSCRIPT{
+
+    <script src="~/Scripts/utils.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            //1.0登录：
+            $("#loginSubmit").click(function () {
+                login();
+            });
+            chatInRoom();
+            //3.0显示好友
+            GetUserFriends();
+        });
+        var returnUrl = "";
+        //用户登录
+        function login() {
+            var loginForm = document.forms["loginForm"];
+            var accountName = $("#loginName").val() ? $("#loginName").val() : "";
+            var password = $("#loginPwd").val() ? $("#loginPwd").val() : "";
+            //   var isRemember = 'input[name="test"]:checked')..checked;
+            if (!verifyLogin(accountName, password)) {
+                return;
+            }
+            var parms = new Object();
+            parms["loginName"] = accountName;
+            parms["password"] = password;
+            //parms["isRemember"] = isRemember;
+            returnUrl = '@WorkContext.Url';
+            $.post("/account/login", parms, function (data) {
+                if (data.state == "success") {
+                    window.location.href = returnUrl == "" ? "/" : returnUrl;
+                }
+                else if (data.state == "valicationErr") {
+                    alert(data.content);
+                }
+                else if (data.state == "error") {
+                    alert(data.content);
+                }
+            }, "json");
+        }
+
+        //验证登录
+        function verifyLogin(accountName, password) {
+            if (accountName.length == 0) {
+                alert("请输入邮箱或者手机号码");
+                return false;
+            }
+            if (password.length == 0) {
+                alert("请输入密码");
+                return false;
+            }
+
+            return true;
+        }
+
+
+
+        //登录chat
+        function openChat() {
+            var ci = $("#city").val();
+            art.dialog.open('/SendDialog?ci=' + ci, { title: "发言", width: 600, height: 380 });
+
+        }
+        //-------------------------------------------    //2.0中间发言--------------------------------------
+        function chatInRoom() {
+            $("#scrolll a:odd").live("click", function () {
+                var fromUser = $(this).parents(".center_1").attr("uid");
+
+                //注册用户：
+                if (!uIsNull(fromUser) && fromUser != "00000000-0000-0000-0000-000000000000") {
+                    $.post("/Account/AddFriend", { FriendId: fromUser }, function (data) {
+                        if (data.state == "ok") {
+                            window.location.href = '/Chat/Room/' + fromUser;
+                        } else if (data.state == "self") {
+                            alert("不能自己与自己聊天！");
+                        }
+                    }, "json");
+                } else {
+                    alert("该用户未注册！！");
+                }
+
+            });
+        }
+        @*  //----------------------------------------- //3.0显示好友---------------------------------------
+        function GetUserFriends() {
+            var uid = "@Guid.Empty.Equals(WorkContext.Uid)";
+            if (uid == "False") {
+                $.post("/Account/GetUserFriends", null, function (data) {
+                    if (data.IsSuccess && data.TData.length > 0) {
+                        var html = "";
+                        for (var i = 0; i < data.TData.length; i++) {
+                            html += "<a href='javascript:;'><p class='nr_right_1'><span style='display: block; float: left; margin-top: 16px; margin-left: 9px;'>";
+                            html += " <img width='40px;' height='40px;' src='" + data.TData[i].HeadImage + "'></span><span style='margin-top: 16px; display: block; line-height: 21px;'>";
+                            html += "<span  style='margin-left: 13px;'>" + data.TData[i].NickName + "</span><br>";
+                            html += " <span id='c2' style='margin-left: 13px;'>积分：</span><span ></span>" + data.TData[i].RankCredits + " </span></p></a>";
+                        }
+                        $("#sucai3").append(html);
+                    }
+
+                }, "json");
+            }
+
+        }*@
+
+        //----------------------------------------- //3.0显示好友---------------------------------------
+        function GetUserFriends() {
+            var uid = "@user.Id";
+            if (uid != "" && uid != "00000000-0000-0000-0000-000000000000") {
+                $.post("/Account/GetUserFriends", null, function (data) {
+
+                    if (data.IsSuccess && data.TData.length > 0) {
+                        var html = "";
+                        var hsn = "";
+                        var nm = "";
+                        var gr = "";
+                        for (var i = 0; i < data.TData.length; i++) {
+                            //hsn = "<img src='/Content/images/n.gif' width='20' height='20'/>";
+                            var imgsrc = "";
+                            var img = "";
+                            if (data.TData[i].IsHasNews == true) {
+                                hsn = "<img src='/Content/images/n.gif' width='20' height='20'/>";
+                            } else {
+                                hsn = '';
+                            }
+                            if (data.TData[i].IsOnline == true) {
+
+                                nm = "<span style='color:red;font-weight:bold;'>" + data.TData[i].NickName + "</span>";
+                                gr = "";
+                            } else {
+                                gr = "gray";
+                                nm = "<span style='color:black'>" + data.TData[i].NickName + "</span>";
+
+                            }
+                            img = data.TData[i].HeadImage == null ? "/Content/images/LOGO_03.png" : data.TData[i].HeadImage;
+
+                            imgsrc = "<img style='width:40px;height:40px' src='" + img + "' class='" + gr + "'>";
+
+
+                            if (uid == data.TData[i].Id) {
+                                html += "<a href='javascript:'><p class='nr_right_1'><span style='display: block; float: left; margin-top: 16px; margin-left: 9px;'>";
+                            } else {
+                                html += "<a href='javascript:' onclick=\"ShowChatRoom('" + data.TData[i].Id + "')\"><p class='nr_right_1'><span style='display: block; float: left; margin-top: 16px; margin-left: 9px;'>";
+                            }
+                            html += imgsrc + "</span><span style='margin-top: 16px; display: block; line-height: 21px;'>";
+                            html += "<span  style='margin-left: 13px;'>" + nm + hsn + "</span><br>";
+                            html += " <span id='c2' style='margin-left: 13px;'>积分：</span><span ></span>" + data.TData[i].RankCredits + " </span></p></a>";
+                        }
+                        $("#sucai3").empty().append(html);
+                    }
+
+                }, "json");
+            }
+
+        }
+
+
+
+        function DelItem(itemid) {
+            //if (confirm("你确定要删除此数据？")) {
+            flag = 1;
+            // alert("111");
+           
+
+            $.ajax({
+                type: "post",
+                url: "DelOneSpeeInfo",
+                data: { id: itemid },
+                dataType: "text",
+                success: function (data) {
+
+
+                    if (data != null) {
+                        alert(data);
+                        window.location.reload();
+
+                    }
+                }
+            });
+
+
+        }
+
+    </script>
+}

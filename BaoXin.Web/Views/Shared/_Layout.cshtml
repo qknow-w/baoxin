@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="x-ua-compatible" content="ie=8"/>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - 爆信网</title>
+   
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link type="text/css" rel="stylesheet" href="/Content/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="/Content/css/reset.css" />
+    <script type="text/javascript" src="/Scripts/layer/style.js"></script>
+
+    @if (IsSectionDefined("BEGINCSS"))
+    {
+        @RenderSection("BEGINCSS")
+    }
+</head>
+    <body >
+        
+        3333333222
+        <div class="head">
+            <ul>
+                <li></li>
+                <li class="logo"></li>
+                <li>
+                    <span class="sousuo">@WorkContext.CityName</span>
+                    @if (IsSectionDefined("HeadTop"))
+                    {
+                        @RenderSection("HeadTop")
+                    }
+                </li>
+
+                <li class="login" style="padding-top: 10px; font: bold 14px;">
+                    <!--注册登录-->
+                    @Html.Partial("_LoginPartial")
+                    <div id="main">
+                        <div id="fullbg"></div>
+                        <div id="dialog">
+                            <div>
+                                <form id="loginForm" method="post">
+                                    <ul>
+                                        <li style="height: 68px; width: auto;">
+                                            <p class="close"><a href="#" onclick="closeBg();" class="chacha"></a></p>
+                                        </li>
+                                        <li style="font-family: '微软雅黑'; font-size: 14px; text-align: left; text-indent: 4em;">爆信网账号登录</li>
+                                        <li class="user">
+                                            <input style="background-color: inherit; width: 226px; height: 30px; margin-top: 1px; margin-left: 30px; text-indent: 0.5em; border: none;"
+                                                   id="loginName" type="text" placeholder="您的邮箱地址或绑定手机" /></li>
+                                        <li class="mima">
+                                            <input id="loginPwd" type="password" style="background-color: inherit; width: 226px; height: 30px; margin-top: 1px; margin-left: 30px; text-indent: 0.5em; border: none;"
+                                                   placeholder="请输入密码" onfocus="javascript:if(this.value=='请输入密码')this.value='';" /></li>
+                                        <li class="moren_dl"><span style="margin-top: 10px; display: block; float: left;">
+                                                                 <input id="loginIsRem" type="checkbox" /></span><span style="display: block; float: left; margin-left: 8px;">
+                                                                                                                     下次自动登录</span><a href="#" style="display: block; float: right; margin-left: 8px; color: #59bee5;">忘记密码</a></li>
+                                        <li class="moren_dl"><a href="#"><span class="login1" id="loginSubmit">登录</span></a><span style="display: block; float: left; margin-left: 8px;">还没有爆信网账号?</span>
+                                            <a href="@Url.Action("register", "account", new RouteValueDictionary { { "returnUrl", WorkContext.Url } })"" style="display: block; float: right; margin-left: 8px; color: #59bee5;">立即注册!</a>
+
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="zhuce_beijing">
+            <div class="nr_box">
+                @RenderBody()
+            </div>
+            <div style="clear: both;"></div>
+            <div class="end">Copyright &copy; 2014. All Rights Reserved. 版权所有</div>
+            <div style="height: 39px;"></div>
+        </div>
+
+
+        @* @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)*@
+        <script src="/Scripts/layer/jquery.min.js"></script>
+
+        <script type="text/javascript" src="/Scripts/layer/jquery.nicescroll.js"></script>
+        <script type="text/javascript">
+            $("#sucai3").niceScroll({
+                cursorcolor: "#dcf0fa",
+                cursoropacitymax: 1,
+                touchbehavior: false,
+                cursorwidth: "7px",
+                cursorborder: "0",
+                cursorborderradius: "5px"
+            });
+            //显示灰色 jQuery 遮罩层 
+            function showBg() {
+                var bh = $("body").height();
+                var bw = $("body").width();
+                $("#fullbg").css({
+                    height: bh,
+                    width: bw,
+                    display: "block"
+                });
+                $("#dialog").show();
+            }
+            //关闭灰色 jQuery 遮罩 
+            function closeBg() {
+                $("#fullbg,#dialog").hide();
+            }
+
+        </script>
+        @if (IsSectionDefined("ENDSCRIPT"))
+        {
+            @RenderSection("ENDSCRIPT")
+        }
+    </body>
+</html>

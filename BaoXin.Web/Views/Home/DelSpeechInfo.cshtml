@@ -1,0 +1,377 @@
+@{
+    ViewBag.Title = "Index";
+    Layout = "";
+}
+@using BaoXin.Core;
+@using BaoXin.Entity
+@model List<BaoXin.Entity.SpeechInfo>
+@{
+    var user = new UsersEntity();
+if (Session["User"] != null)
+{
+    user = Session["User"] as UsersEntity;
+
+} 
+
+List<City> citys = new List<City>();
+if (ViewBag.Citys != null)
+{
+    citys = ViewBag.Citys as List<City>;
+}
+    
+
+}  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <link type="text/css" rel="stylesheet" href="/Content/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="/Content/css/reset.css" />
+    <script src="/Scripts/artDialog.source.js?skin=blue"></script>
+    <script src="/Scripts/iframeTools.source.js"></script>
+    <title>@ViewBag.Title - 爆信网</title>
+    <script type="text/javascript">
+        //显示灰色 jQuery 遮罩层 
+        function showBg() {
+
+            $("#fullbg").css({
+                display: "block"
+            });
+            $("#dialog").show();
+        }
+        //关闭灰色 jQuery 遮罩 
+        function closeBg() {
+            $("#fullbg,#dialog").hide();
+        }
+
+        function GoDel() {
+            window.location.href = "DelSpeechInfo";
+        }
+
+    </script>
+   <style>
+
+       .box ul {
+           margin: 0px;
+           padding: 0px;
+           list-style: none;
+           border: 0;
+       }
+
+           .box ul li {
+               margin: 0px 2px 0px 0px;
+               padding: 0px;
+               width: 120px;
+               height: 35px;
+               display: block;
+               border-radius: 0px;
+               border: 0;
+           }
+
+               .box ul li:hover ul {
+                   display: block;
+               }
+
+               .box ul li a {
+                   text-align: center;
+                   width: 121px;
+                   height: 42px;
+                   line-height: 35px;
+                   display: block;
+                   text-decoration: none;
+               }
+
+               .box ul li ul {
+                   display: none;
+                   position: relative;
+                   top: -37px;
+                   left: 121px;
+               }
+
+                   .box ul li ul li {
+                       margin-left: 50px;
+                       padding: 0px;
+                       background-color: #FFFFFF;
+                       border: 1px solid #b6adad;
+                   }
+
+       .sech {
+           background-color: pink;
+       }
+
+       .box ul li ul li:hover {
+           background: pink;
+       }
+
+           .box ul li ul li:hover ul {
+               visibility: visible;
+           }
+
+       .box ul li ul li ul {
+           visibility: hidden;
+           position: relative;
+           top: -37px;
+           left: 121px;
+       }
+        .btn {
+            background-image: url('/Content/images/search.png');
+            width:32px;
+            border:none;
+            height:28px;
+            cursor:pointer
+        } 
+   </style>
+</head>
+<body>
+    <div class="big_box">
+         <div class="head">
+            <ul>
+                <li></li>
+                <li class="logo"></li>
+                @using (Html.BeginForm())
+                {
+                    <li class="sousuo">
+                        <span style="padding-top: 18px; float: left;font-size: 16px;">
+                        <select id="city" name="city" >
+                            @foreach (var c in citys) { 
+                                <option value="@c.CityName" @if (ViewBag.Sel == c.CityName)
+                                                            {@Html.Raw("selected='selected'");}>@c.CityName</option>
+                            }
+
+
+                        </select>
+                        </span>
+                        <span style="padding-top: 14px; margin-left: 17px; display: block; float: left;">
+                            <img src="/Content/images/sousuo_05.png" />
+                        </span>
+                        <span>
+                            <input type="text" id="Searchkey" name="Searchkey" value="@ViewBag.Key" style="margin-top: 14px; float: left; width: 267px; line-height: 29px; background-color: #e6e6e6; border: none; height: 29px;" />
+                        </span>
+                        <span style="padding-top: 14px; display: block; float: left;">
+                           
+                                <span>
+                                    <input type="submit"  class="btn" value="" />
+                                 
+                                </span>
+                           
+                        </span>
+                        <li style="padding-top: 18px;float:left;font-size:24px;font-weight:bold;color:white"> 爆信一下</li>
+                    </li>
+                }
+                @Html.Partial("_login")
+
+            </ul>
+        </div>
+        <div id="dialog">
+            <div>
+                <ul>
+                    <li style="height: 68px; width: auto;">
+                        <p class="close"><a href="#" onclick="closeBg();" class="chacha"></a></p>
+                    </li>
+                    <li style="font-family: '微软雅黑'; font-size: 14px; text-align: left; text-indent: 4em;">爆信网账号登录</li>
+                    <li class="user">
+                        <input id="loginName" name="loginName" style="background-color: inherit; width: 226px; height: 30px; margin-top: 1px; margin-left: 30px; text-indent: 0.5em; border: none;" type="text" value="您的邮箱地址或绑定手机" onfocus="javascript:if(this.value=='您的邮箱地址或绑定手机')this.value='';" />
+                    </li>
+                    <li class="mima">
+                        <input id="loginPwd" name="loginPwd" style="background-color: inherit; width: 226px; height: 30px; margin-top: 1px; margin-left: 30px; text-indent: 0.5em; border: none;" type="password" onfocus="javascript:if(this.value=='请输入密码')this.value='';" />
+                    </li>
+                    <li class="moren_dl">
+                        <span style="margin-top: 10px; display: block; float: left;">
+                            <input name="" type="checkbox" value="" />
+                        </span><span style="display: block; float: left; margin-left: 8px;">下次自动登录</span><a href="#" style="display: block; float: right; margin-left: 8px; color: #59bee5;">忘记密码</a>
+                    </li>
+                    <li class="moren_dl"><a href="#"><span class="login1" id="loginSubmit">登录</span></a><span style="display: block; float: left; margin-left: 8px;">还没有爆信网账号?</span><a href="@Url.Action("register", "account", new RouteValueDictionary { { "returnUrl", WorkContext.Url } })" style="display: block; float: right; margin-left: 8px; color: #59bee5;">立即注册!</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="zhuce_beijing">
+            <div class="nr_box">
+                <ul>
+                    <li class="nr_left">
+                        <div class="box">
+                            <ul>
+                                <li>
+                                    <a href="/">
+                                        <p class="nr_left_8" style="margin-top: 49px;"></p>
+                                    </a>
+                                </li>
+                                <li>
+
+                                    <a href="http://mp3.baidu.com" target="_blank"><p class="nr_left_2"></p></a>
+                                    <ul>
+                                        <li><a href="http://mp3.baidu.com" target="_blank">百度音乐</a></li>
+                                        <li><a href="http://www.xiami.com/" target="_blank">虾米</a></li>
+                                        <li><a href="http://www.kugou.com/" target="_blank">酷狗</a></li>
+
+                                    </ul>
+                                </li>
+                                <li>
+
+                                    <a href="http://www.sina.com.cn" target="_blank"><p class="nr_left_7"></p></a>
+                                    <ul>
+                                        <li><a href="http://www.sina.com.cn" target="_blank">新浪</a></li>
+                                        <li><a href="http://www.sohu.com/" target="_blank">搜狐</a></li>
+                                        <li><a href="http://www.163.com/" target="_blank">网易</a></li>
+
+                                    </ul>
+                                </li>
+                                <li>
+
+                                    <a href="http://www.4399.com" target="_blank"><p class="nr_left_3"></p></a>
+                                    <ul>
+                                        <li><a href="http://www.4399.com" target="_blank">4399</a></li>
+                                        <li><a href="http://www.7k7k.com" target="_blank">7k7k</a></li>
+                                        <li><a href="http://www.17173.com" target="_blank">17173</a></li>
+
+                                    </ul>
+                                </li>
+                                <li>
+
+                                    <a href="http://www.youku.com" target="_blank"><p class="nr_left_4"></p></a>
+                                    <ul>
+                                        <li><a href="http://www.youku.com" target="_blank">优酷</a></li>
+                                        <li><a href="http://www.tudou.com" target="_blank">土豆</a></li>
+                                        <li><a href="http://v.qq.com" target="_blank">腾讯</a></li>
+
+                                    </ul>
+                                </li>
+                                <li>
+
+                                    <a href="#"><p class="nr_left_5"></p></a>
+
+                                </li>
+                                <li>
+
+                                    <a onclick="openChat();">
+
+                                        <p class="nr_left_6"></p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nr_center" style="overflow-y: scroll; overflow-x: hidden">
+                        <div style="height: 37px; width: 840px;"></div>
+
+                        @if (Model.Count > 0)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <div class="center_1" uid="@item.FromUser">
+                                    <h5 style="text-align: center;padding-top: 10px;">
+                                        <a title="更多..." href="javascript:;">@StringHelper.SubString(item.SpeachContent, 12)</a>
+
+  
+                                        @Html.Raw("<a href=\"javascript:\" onclick=\" DelItem('" + item.Id + "')\" style=\"color: red\">删除</a>")
+
+                                    </h5>
+                                    <a title="聊天..." href="javascript:;">
+                                        <img style="margin-top: 17px;margin-left:10px;" width="223" height="150" src="@(item.SpeechImage == "" ? "/Content/images/LOGO_03.png" : item.SpeechImage)" />
+                                    </a>
+                                    
+                                        
+                                </div>
+                            
+     
+                            }
+                        }
+
+                    </li>
+
+                    <li class="nr_right" id="sucai3"></li>
+                </ul>
+            </div>
+            @Html.Partial("_footer")
+        </div>
+    <script type="text/javascript" src="/Scripts/layer/jquery.min.js"></script>
+
+    <script src="~/Scripts/utils.js"></script>
+    <script type="text/javascript">
+
+
+    $(function () {
+        //1.0登录：
+        $("#loginSubmit").click(function () {
+            login();
+        });
+
+    });
+    var returnUrl = "";
+    //用户登录
+    function login() {
+        var loginForm = document.forms["loginForm"];
+        var accountName = $("#loginName").val() ? $("#loginName").val() : "";
+        var password = $("#loginPwd").val() ? $("#loginPwd").val() : "";
+        //   var isRemember = 'input[name="test"]:checked')..checked;
+        if (!verifyLogin(accountName, password)) {
+            return;
+        }
+        var parms = new Object();
+        parms["loginName"] = accountName;
+        parms["password"] = password;
+        //parms["isRemember"] = isRemember;
+        returnUrl = '@WorkContext.Url';
+        $.post("/account/login", parms, function (data) {
+            if (data.state == "success") {
+                window.location.href = returnUrl == "" ? "/" : returnUrl;
+            } else if (data.state == "valicationErr") {
+                alert(data.content);
+            } else if (data.state == "error") {
+                alert(data.content);
+            }
+        }, "json");
+    }
+
+    //验证登录
+
+    function verifyLogin(accountName, password) {
+        if (accountName.length == 0) {
+            alert("请输入邮箱或者手机号码");
+            return false;
+        }
+        if (password.length == 0) {
+            alert("请输入密码");
+            return false;
+        }
+
+        return true;
+    }
+
+    //登录chat
+
+    function openChat() {
+
+
+        art.dialog.open('/SendDialog', { title: "发言", width: 330, height: 190 });
+
+
+    }
+
+
+    function DelItem(itemid) {
+        //if (confirm("你确定要删除此数据？")) {
+
+            $.ajax({
+                type: "post",
+                url: "DelOneSpeeInfo",
+                data: { id: itemid },
+                dataType: "text",
+                success: function (data) {
+
+
+                    if (data != null) {
+                        alert(data);
+                        window.location.reload();
+
+                    }
+                }
+            });
+        //}
+
+    }
+
+    </script>
+</body>
+<
+</html>

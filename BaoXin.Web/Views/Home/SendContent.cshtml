@@ -1,0 +1,98 @@
+@using BaoXin.Entity
+@using BaoXin.Entity.Result
+@{
+    Layout = "";
+    bool flg = ViewBag.IsShowSend;
+    UsersEntity user=new    UsersEntity();
+    if (Session["User"] != null)
+    {
+        user = Session["User"] as UsersEntity;
+        
+    }
+
+
+}
+@model TResult<BaoXin.Entity.SpeechInfoEntity> 
+  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+
+    <title>详情</title>
+    <link type="text/css" rel="stylesheet" href="/Content/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="/Content/css/reset.css" />
+    <script type="text/javascript" src="/Scripts/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/Scripts/editor/umeditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Scripts/editor/umeditor.js?v=@DateTime.Now"></script>
+    <link href="/Scripts/editor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/Scripts/Core.js?v=@DateTime.Now"></script>
+
+</head>
+<body  >
+    <div  >
+        
+        <ul style="height:240px;">
+
+            <li style="text-align: center">
+                @if (Model.TData != null)
+                {
+                    if (!string.IsNullOrEmpty(Model.TData.SpeechImage))
+                    {
+                        <img src="@Model.TData.SpeechImage" width="200" height="220" /><br />
+                    }
+                    <span>@Html.Raw(Model.TData.SpeachContent)</span>
+                      <input type="hidden" value="@Model.TData.FromUser" id="hfto" name="hfto"/>
+           
+                }
+
+            </li>
+
+        </ul>
+        @if ((user != null && user.Id.ToString() != "00000000-0000-0000-0000-000000000000") && flg && (Model.TData != null && Model.TData.FromUser != user.Id))
+        {
+            <ul>
+                <li class="top_z_lt">
+                    <ul>
+               
+                        <li class="top_y_lt_1">
+                   
+                            <textarea id="message" style="width: 606px; height: 98px;"></textarea>
+                    
+
+                        </li>
+                
+                    </ul>
+                </li>
+                <li class="top_z" >
+             
+                    <input type="button" class="top_z_lt_7" id="sendmessage"/>
+                    
+                </li>
+            </ul>
+        }
+        else
+        {
+            <ul style="text-align: center;margin-top: 10px;color:red">
+                <li>此信息为非注册用户发送，不能向其留言！</li>
+            </ul>
+        }
+    </div>
+    
+        <script type="text/javascript">
+            var um = UM.getEditor('message');
+            $(function() {
+            $("#sendmessage").click(function () {
+                var content = UM.getEditor('message').getContent();
+               
+                var toid = $("#hfto").val();
+                    YXQCore.Form.PostData("/Chat/SendChat", { tid: toid, ctx: content }, function (data) {
+                        if (data == "success") {
+                            UM.getEditor('message').setContent('');
+                            alert("发送成功");
+                        }
+                    });
+                });
+            });
+        </script>
+</body>
+</html>

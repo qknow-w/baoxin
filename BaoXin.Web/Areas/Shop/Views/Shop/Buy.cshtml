@@ -1,0 +1,250 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>购买信息</title>
+    <link href="~/Content/shop/css/style.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery.js"></script>
+    <style>
+	body{ font-size:18px; font-weight:bold; font-family:"微软雅黑", "特粗黑体", "黑体";}
+	.zhifu{ background: url(@Url.Content("~/content/Shop/images/dengl.png")) no-repeat; height:50px; width:138px; font-size:18px; text-align:center; line-height:50px; color:#FFFFFF;}
+	.xiugai{ background: @Url.Content("~/content/Shop/images/xiugai.png") no-repeat; height:50px; width:145px; font-size:18px; text-align:center; line-height:50px; color:#FFFFFF;}
+	.quxiao{background: url(@Url.Content("~/content/Shop/images/quxiao.png")) no-repeat; height:50px; width:145px; font-size:18px; text-align:center; line-height:50px; color:#FFFFFF;}
+	.zq a{ color:#FFFFFF; text-decoration:none;}
+</style>
+</head>
+
+<script type="text/javascript">
+
+    $(function () {
+        $.ajax({
+            url: '/shop/shop/GetBuyJosn',
+            type: 'get',
+            async: false,
+            success: function (data) {
+                if (data.length != 0) {
+                    $("#StoreId").val(data["StoreId"]);
+                    $("#StoreName").val(data["StoreName"]);
+                    $("#PeopleName").val(data["PeopleName"]);
+                    $("#PeopleAdd").val(data["PeopleAdd"]);
+                    $("#PeoplePhone").val(data["PeoplePhone"]);
+                    $("#PeoplePay").val(data["PeoplePay"]);
+                  
+                }
+
+            }
+        });
+
+
+
+        $.ajax({
+            url: '/shop/shop/GetGoodsJosn/'+'@ViewBag.goodsid',
+            type: 'get',
+            async: false,
+            success: function (data) {
+                if (data.length != 0) {
+                    
+                    $("#GoodsPrice").val(data["GoodsPrice"]);
+                    $("#PhotoURL").attr("src", data["PhotoURL"]);
+                    $("#GoodsName").val(data["GoodsName"]);
+                    $("#stock").text(data["Goodsnumber"]);
+                    $("input[type=text][name=stock]").val(data["Goodsnumber"]);
+
+                }
+
+            }
+        });
+
+
+        $("#comfig").click(function () {
+
+            if ($("input[type=text][name=buyNum]").val()>$("#stock").text()) {
+                alert("库存数据不足");
+                return false;
+            }
+
+
+            //if (parseInt($("input[type=text][name=buyNum]").val(), 10) > parseInt($("#stock").text(), 10)) {
+            //    alert("库存数据不足");
+            //    return false;
+            //}
+
+            if ($("input[type=text][name=buyNum]").val() == "" || $("input[type=text][name=PeopleName]").val() == "" ||
+                  $("input[type=text][name=PeopleAdd]").val() == ""   || $("input[type=text][name=PeoplePhone]").val() == "" ||
+                  $("input[type=text][name=PeoplePay]").val() == "") {
+                alert("请完整填写各项内容，否则不能正常购买物品");
+                return false;
+            }
+
+            $("#ff").submit();
+
+        });
+
+
+    });
+
+</script>
+
+<body >
+    <form id="ff" method="POST" action="/shop/shop/DoOrder">
+        <div id="big1" style="width: 950px">
+            <table width="1008" height="406" border="0" align="center">
+                <tr>
+                    <td height="60" colspan="5" style="color: #f9b125; font-weight: 800; font-family: '微软雅黑'; font-size: 30px;">
+                        <div align="center">购买信息</div>
+                    </td>
+                </tr>
+                <tr>
+                <tr>
+                    <td height="26" colspan="5" style="color: #f9b125; font-weight: 800; font-family: '微软雅黑'; font-size: 18px;">
+                        <div align="justify">
+                            <blockquote>
+                                <blockquote>
+                                    <blockquote>
+                                        <blockquote>
+                                            <blockquote>
+                                                <p>卖家信息</p>
+                                            </blockquote>
+                                        </blockquote>
+                                    </blockquote>
+                                </blockquote>
+                            </blockquote>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="60" colspan="4">
+                        <div align="right">店名：</div>
+                    </td>
+                    <td width="724">
+                         <input name="stock" type="text"  style="display:none"/>
+                        <input name="GoodsId" style="display: none" value="@ViewBag.goodsid" />
+                        <input id="StoreId"name="StoreId" style="display: none"/>
+                        <input type="text" disabled="disabled" id="StoreName" style="background:url(@Url.Content("~/Content/shop/images/input_bj.png")) no-repeat; line-height:32px; height:32px; width:400px; border:0; padding:2px 6px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td height="60" colspan="4">
+                        <div align="right">店主：</div>
+                    </td>
+                    <td>
+                        <input type="text" disabled="disabled" id="PeopleName" style="background:url(@Url.Content("~/Content/shop/images/input_bj.png")) no-repeat; line-height:32px; height:32px; width:400px; border:0; padding:2px 6px" value="王XX"/></td>
+                </tr>
+                <tr>
+                    <td height="60" colspan="4">
+                        <div align="right">地址：</div>
+                    </td>
+                    <td>
+                        <input type="text" disabled="disabled" id="PeopleAdd" style="background:url(@Url.Content("~/Content/shop/images/input_bj.png")) no-repeat; line-height:32px; height:32px; width:400px; border:0; padding:2px 6px"  value="134XXXXXXXX"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="60" colspan="4">
+                        <div align="right">联系方式：</div>
+                    </td>
+                    <td>
+                        <p>
+                            <input type="text" disabled="disabled" id="PeoplePhone" style="background:url(@Url.Content("~/Content/shop/images/input_bj.png")) no-repeat; height:32px; line-height:32px; width:400px; border:0; padding:2px 6px"  value="123456789@qq.com"/>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="60" colspan="4">
+                        <div align="right">支付宝账号：</div>
+                    </td>
+
+                    <td>
+                        <input type="text" disabled="disabled" id="PeoplePay" style="background:url(@Url.Content("~/Content/shop/images/input_bj.png")) no-repeat; line-height:32px; height:32px; width:401px; border:0; padding:2px 6px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td height="60" colspan="4" valign="top" style="color: #f9b125; font-weight: 800; font-family: '微软雅黑'; font-size: 18px;">
+                        <div align="right">买家信息:</div>
+                    </td>
+
+                    <td>
+                        <p>
+                            <img type="text" id="PhotoURL" disabled="disabled" style="height: 204px; width: 400px; border: 0; padding: 2px 6px; border: 1px #000000 solid; border-radius: 10px;" />
+                        </p>
+                        <blockquote>
+                            <blockquote>
+                                <p id="GoodsName"></p>
+                            </blockquote>
+                        </blockquote>
+                    </td>
+                </tr>
+            </table>
+            <table width="868" align="center">
+                <tr>
+                    <td width="219">
+                        <div align="right">单价：</div>
+                    </td>
+                    <td width="155">
+                        <div align="left">
+                            <input type="text" disabled="disabled" id="GoodsPrice" style="height: 33px; width: 155px; border: 0; padding: 2px 6px; background-color: #ffffff" />
+                        </div>
+                    </td>
+                    <td width="80">
+                        <div align="left">数量：</div>
+                    </td>
+                    <td width="394">
+                        <div align="left">
+                            <input type="text" name="buyNum" style="height: 33px; width: 155px; border: 0; padding: 2px 6px" /><span>&nbsp;库存数:&nbsp;</span><span  id="stock"></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table width="1023" align="center">
+                <tr>
+                    <td height="60" colspan="4">
+                        <div align="right">联系人：</div>
+                    </td>
+                    <td width="720">
+                        <input type="text" name="PeopleName" style="background:url(@Url.Content("~/Content/shop/images/input_bj.png")) no-repeat; line-height:32px; height:32px; width:400px; border:0; padding:2px 6px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td height="60" colspan="4">
+                        <div align="right">联系方式：</div>
+                    </td>
+                    <td width="720">
+                        <input type="text" name="PeoplePhone" style="background:url(@Url.Content("~/Content/shop/images/input_bj.png")) no-repeat; line-height:32px; height:32px; width:400px; border:0; padding:2px 6px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td height="60" colspan="4">
+                        <div align="right">收货地址：</div>
+                    </td>
+                    <td width="720">
+                        <input type="text" name="PeopleAdd" style="background:url(@Url.Content("~/Content/shop/images/input_bj.png")) no-repeat; line-height:32px; height:32px; width:400px; border:0; padding:2px 6px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td height="60" colspan="4">
+                        <div align="right">支付宝账号：</div>
+                    </td>
+                    <td width="720">
+                        <input type="text" name="PeoplePay" style="background:url(@Url.Content("~/Content/shop/images/input_bj.png")) no-repeat; line-height:32px; height:32px; width:400px; border:0; padding:2px 6px" />
+                    </td>
+                </tr>
+            </table>
+            <table width="565" align="center" class="zq">
+                <tr>
+                    <td width="216">
+                        <div align="center" id="comfig" class="zhifu"><a href="#">确定</a></div>
+                    </td>
+                    @*<td width="184"><div align="center" class="xiugai"><a href="#">修改</a></div></td>*@
+                    <td width="149">
+                        <div align="center" class="quxiao"><a href="/index">取消</a></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

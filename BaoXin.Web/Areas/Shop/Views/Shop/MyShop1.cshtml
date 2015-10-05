@@ -1,0 +1,362 @@
+﻿@using BaoXin.Entity
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@{
+   
+    List<City> citys = new List<City>();
+    if (ViewBag.Citys != null)
+    {
+        citys = ViewBag.Citys as List<City>;
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>我的店铺</title>
+    <link href="~/Content/shop/css/style.css" rel="stylesheet" />
+    <script src="~/Content/js/jquery.js"></script>
+    <link href="~/Content/shop/css/pagination.css" rel="stylesheet" />
+
+    <script src="~/Content/bootstrap-paginator/src/bootstrap-paginator.js"></script>
+
+     <script src="~/Scripts/artDialog.js"></script>
+    <link href="~/Content/css/reset.css" rel="stylesheet" />
+    <link href="~/Content/css/zzsc.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <script src="~/Scripts/artDialog.source.js"></script>
+     <link href="~/Content/new/css/style.css" rel="stylesheet" />
+    <script src="~/Scripts/iframeTools.source.js"></script>
+ @*   <script src="~/Scripts/layer/style.js"></script>*@
+    <link href="~/Scripts/skins/blue.css" rel="stylesheet" />
+
+
+
+
+
+
+    <script type="text/javascript">
+
+
+        $(function () {
+            $("#loginSubmit").click(function () {
+                login();
+            });
+        })
+        function showBg() {
+            var bh = $("body").height();
+            var bw = $("body").width();
+            $("#fullbg").css({
+                height: bh,
+                width: bw,
+                display: "block"
+            });
+            $("#dialog").show();
+        }
+
+
+        //用户登录
+        function login() {
+            var loginForm = document.forms["loginForm"];
+            var accountName = $("#loginName").val() ? $("#loginName").val() : "";
+            var password = $("#loginPwd").val() ? $("#loginPwd").val() : "";
+            //   var isRemember = 'input[name="test"]:checked')..checked;
+            if (!verifyLogin(accountName, password)) {
+                return;
+            }
+            var parms = new Object();
+            parms["loginName"] = accountName;
+            parms["password"] = password;
+            //parms["isRemember"] = isRemember;
+            ;
+            $.post("/account/login", parms, function (data) {
+                if (data.state == "success") {
+                    window.location.href = "/index";
+                }
+                else if (data.state == "valicationErr") {
+                    alert(data.content);
+                }
+                else if (data.state == "error") {
+                    alert(data.content);
+                }
+            }, "json");
+        }
+
+        //验证登录
+        function verifyLogin(accountName, password) {
+            if (accountName.length == 0) {
+                alert("请输入邮箱或者手机号码");
+                return false;
+            }
+            if (password.length == 0) {
+                alert("请输入密码");
+                return false;
+            }
+
+            return true;
+        }
+
+
+        //关闭灰色 jQuery 遮罩 
+        function closeBg() {
+            $("#fullbg,#dialog").hide();
+        }
+        function GoDel() {
+            if ($("#delete").text() == "删除") {
+                $("#delete").text("返回");
+                $("#scrolll li a").each(function () {
+                    // console.log($(this));                
+                    $(this).css("display", "block");
+                });
+            } else {
+                location.reload();
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+    <div id="big">
+        <div class="top">
+            <div class="logo">
+                <img src=@Url.Content("~/Content/shop/images/LOGO.png") /></div>
+             
+            <div class="diqu">
+
+
+                <form action="/Home/index1" method="POST" style="width: 650px; height: 40px; position: relative">
+                    <span style="width: 75px; height: 34px; position: absolute; top: 0; left: 5px;">
+                        <img src="@Url.Content("~/Content/new/images/TOP_diqu.png")" style="width: 75px;height: 34px" /></span>
+
+                    <select id="city" name="city" style="width: 75px; height: 34px; position: absolute; top: 0; left: 90px; border-radius: 5px">
+                        <option value="">全国</option>
+                        @foreach (var c in citys)
+                        { 
+                            <option value="@c.CityName" @if (ViewBag.Sel == c.CityName)
+                                                        {@Html.Raw("selected='selected'");
+                                                        }>@c.CityName</option>
+                        }
+
+
+                    </select>
+
+                    <input id="bxyx" placeholder="爆信一下" type="text" style="width: 300px; height: 24px; position: absolute; top: 0; left: 180px; border-radius: 5px; font-size: 15px; padding: 5px" id="Searchkey" name="Searchkey" value=" ">
+                    <button onclick="  window.open('/index')" style="width: 100px; height: 32px; position: absolute; top: 0; left: 505px; background: #fafafa; font-size: 15px; font-weight: bold">爆信一下</button>
+
+                </form>
+            </div>
+
+            <div class="clear"></div>
+            <div class="dc" style="width: 270px;margin-right: 54px;">
+                @if (Session["User"] == null)
+                {
+                    <ul style="margin-left: 100px">
+                        
+                        <li style="background:#f9a645;margin-left: 10px;border-radius: 5px;float: right "><a href="/account/register">注册</a></li>
+                    <li style="background:#f9a645;border-radius: 5px;float: right "><a href="#" onclick=" showBg();  ">登陆</a>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    var user = Session["User"] as BaoXin.Entity.UsersEntity;
+                    <ul style="width: 270px;height: 35px;text-align: right">
+
+                    
+                        <li style="background:#f9a645;margin-left: 10px;border-radius: 5px;float: right "><a href="/account/logout">[退出]</a></li>
+                          <li style="background:#f9a645;border-radius: 5px;width: auto;float: right"><a href="#">欢迎您: @user.NickName </a><a target="_blank" href="/shop/admin/loginn">订单管理</a>
+                        </li>
+
+                    </ul>
+   
+                  
+                }
+
+
+            </div>
+        </div>
+
+        <div class="center">
+            <div class="navwddp">
+                <ul>
+                     <li style="height:38px">@if (Session["User"] != null)
+                        {   
+                          
+                            <a href="javascript:" onclick="location.href='/shop/shop/Exam'">我的店铺</a>
+
+                        }
+                        else
+                        { 
+                            <a href="javascript:" onclick="alert('非本店店主不能加商品！')">我的店铺</a>
+                        }
+
+
+
+                    </li>
+                </ul>
+            </div>
+            <div class="wodpzs"  style="overflow-y: scroll;width: 1250px">
+                <ul id="GoodsContent" style="padding-left: 50px">
+                </ul>
+            </div>
+        </div>
+        <div style="margin-left: 65px" id="paginator"></div>
+
+
+        <div class="clear"></div>
+
+        <div id="fullbg"></div>
+        <div id="dialog">
+            <div>
+                <form id="loginForm" method="post">
+                    <ul>
+                        <li style="height: 68px; width: auto;">
+                            <p class="close"><a href="#" onclick="closeBg();" class="chacha"></a></p>
+                        </li>
+                        <li style="font-family: '微软雅黑'; font-size: 14px; text-align: left; text-indent: 4em;">爆信网账号登录</li>
+                        <li class="user">
+                            <input style="background-color: inherit; width: 226px; height: 30px; margin-top: 1px; margin-left: 30px; text-indent: 0.5em; border: none;"
+                                id="loginName" type="text" placeholder="您的邮箱地址或绑定手机" /></li>
+                        <li class="mima">
+                            <input id="loginPwd" type="password" style="background-color: inherit;width: 226px; height: 30px; margin-top: 1px; margin-left: 30px; text-indent: 0.5em; border: none;"
+                                placeholder="请输入密码" onfocus="javascript:if(this.value=='请输入密码')this.value='';" /></li>
+                        <li class="moren_dl"><span style="margin-top: 10px; display: block; float: left;">
+                            <input id="loginIsRem" type="checkbox" /></span><span style="display: block; float: left; margin-left: 8px;">
+                                                                                                                     下次自动登录</span><a href="#" style="display: block; float: right; margin-left: 8px; color: #59bee5;">忘记密码</a></li>
+                        <li class="moren_dl"><a href="#"><span class="login1" id="loginSubmit">登录</span></a><span style="display: block; float: left; margin-left: 8px;">还没有爆信网账号?</span>
+                            <a href="/account/register" style="display: block; float: right; margin-left: 8px; color: #59bee5;">立即注册!</a>
+
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="footer" style="padding-top:25px">
+            <span  style="margin:20px auto; ">爆信网<br />
+                http://www.baoxin999.com/<br />
+                鄂ICP备15002824号-1<br />
+                  Copyright  &copy  2015 爆信网络 All Rights Reserved.</span>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+
+    $(function () {
+
+
+
+
+        $.ajax({
+            url: '/shop/shop/GetGoods',
+            type: 'get',
+            async: false,
+            success: function (data) {
+                if (data.length != 0) {
+                    var html = "";
+                    $.each(data, function (index, content) {
+                        html += "<li class='pzsone' id=" + content['GoodsId'] + "  onclick='selectedGood(" + content['GoodsId'] + ")' style=' height: 262px;  width: 282px;margin-top: 5px;margin-left:4px;'><a href='#'><img style='width:270px;height:180px;border:0'  src=" + content['PhotoURL'] + " />" +
+                            "<span>商品名称：" + content['GoodsName'] + "</span>" +
+                            "<span>价格：" + content['GoodsPrice'] + "&nbsp;&nbsp;库存数：" + content['Goodsnumber'] + "</span>" +
+                            "</a></li>";
+
+                    });
+                    $("#GoodsContent").empty().append(html);
+                }
+
+            }
+        });
+           @* var html = "<li class='pzsone' style='background: #f9a645;  height: 225px;  width: 20%;'><a href='#'><img src=@Url.Content("~/Content/shop/images/dianpuxuanz2.jpg") /><span>服装店服装店服装店服装店服装</span></a></li>";
+            $("#shopContent").empty().append(html);*@
+
+        RandomBg();
+
+
+
+
+
+
+
+        var options = {
+            currentPage: 1,
+            //numberOfPages: 5,
+            // size: "large",
+            totalPages: '@ViewBag.PageCout',
+                itemTexts: function (type, page, current) {
+                    switch (type) {
+                        case "first":
+                            return "第一页";
+                        case "prev":
+                            return "上一页";
+                        case "next":
+                            return "下一页";
+                        case "last":
+                            return "最后一页";
+                        case "page":
+                            return "" + page;
+                    }
+                    return null;
+                },
+                pageUrl: function (type, page, current) {
+                    ////return "/admin/log/getlog" + composeUrlParams() + "&p=" + page;
+                    $.ajax({
+                        url: "/shop/shop/GetGoods?page=" + current,
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.length != 0) {
+                                var html = "";
+                                $.each(data, function (index, content) {
+                                    html += "<li class='pzsone' id=" + content['GoodsId'] + "  onclick='selectedGood(" + content['GoodsId'] + ")' style=' height: 262px;  width: 282px;margin-top: 5px;margin-left:4px;'><a href='#'><img style='width:270px;height:205px;border:0' src=" + content['PhotoURL'] + " />" +
+                                          "<span style='line-height: 20px'>商品名称：" + content['GoodsName'] + "</span>" +
+                            "<span style='line-height: 20px'>价格：" + content['GoodsPrice'] + "&nbsp;&nbsp;库存数：" + content['Goodsnumber'] + "</span>" +
+                                        
+                                        "</a></li>";
+
+                                });
+                                $("#GoodsContent").empty().append(html);
+                            }
+                            RandomBg();
+
+                        }
+                    });
+
+                }
+            };
+
+        $('#paginator').bootstrapPaginator(options);
+
+
+
+
+    });
+
+
+
+        function RandomBg(parameters) {
+            $(".pzsone").each(function () {
+                var bg = ["#f9a645", "#f0593f"];
+                var str = bg[Math.floor(Math.random() * bg.length)];
+
+                $(this).css("background", str);
+            });
+
+
+        };
+
+        function selectedGood(parameters) {
+            window.open("/shop/shop/buy/" + parameters);
+        }
+
+
+
+</script>
+
+</html>
+
